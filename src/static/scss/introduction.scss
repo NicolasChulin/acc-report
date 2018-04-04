@@ -1,0 +1,35 @@
+@import '../variables.scss';
+
+.intr-title{
+  margin-left: 152px;
+}
+
+.intr-detail{
+  padding: 0 152px;
+  margin-top: 35px;
+
+  p{
+    line-height: 40px;
+    font-size: 20px;
+    color: $midDark;
+
+    span{
+      color: $red;
+    }
+  }
+  h3{
+    font-size: 26px;
+    line-height: 40px;
+    color: $dark;
+    margin: 30px 0 10px;
+    font-weight: 500;
+  }
+  ol{
+    padding-left: 10px;
+  }
+  li{
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+  }
+}

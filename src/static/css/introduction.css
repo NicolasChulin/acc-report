@@ -1,0 +1,24 @@
+.intr-title {
+  margin-left: 152px; }
+
+.intr-detail {
+  padding: 0 152px;
+  margin-top: 35px; }
+  .intr-detail p {
+    line-height: 40px;
+    font-size: 20px;
+    color: #46464c; }
+    .intr-detail p span {
+      color: #7a181b; }
+  .intr-detail h3 {
+    font-size: 26px;
+    line-height: 40px;
+    color: #363338;
+    margin: 30px 0 10px;
+    font-weight: 500; }
+  .intr-detail ol {
+    padding-left: 10px; }
+  .intr-detail li {
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px; }

@@ -1,0 +1,39 @@
+.cat-title {
+  margin-left: 424px; }
+
+.cat-back {
+  position: absolute;
+  width: 201px;
+  height: 1630px;
+  left: 0;
+  top: 6px;
+  background: url("/static/images/contents.png") no-repeat; }
+
+.cat-list {
+  margin-left: 428px;
+  margin-top: 20px;
+  color: #48464d; }
+  .cat-list li {
+    height: 158px; }
+    .cat-list li span {
+      display: block;
+      line-height: 158px; }
+    .cat-list li span:first-child {
+      float: left;
+      width: 474px;
+      font-size: 44px;
+      border-right: 1px solid #e0e0e0; }
+    .cat-list li span:last-child {
+      font-size: 64px;
+      position: relative;
+      padding-left: 54px;
+      margin-left: 474px; }
+      .cat-list li span:last-child:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 30px;
+        height: 0;
+        top: 50%;
+        left: 0;
+        border-top: 1px solid #e0e0e0; }

@@ -1,0 +1,374 @@
+@import '../variables.scss';
+
+.score-box{
+  padding: 20px 80px;
+  overflow: hidden;
+}
+
+.page-user-info{
+  height: 125px;
+  background: $red;
+  padding: 15px 30px;
+  color: #fff;
+
+  .info-title{
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    color: rgba(255, 255, 255, .7);
+  }
+
+  .info-list{
+    font-size: 0;
+
+    li{
+      display: inline-block;
+      vertical-align: bottom;
+      font-size: 18px;
+      height: 30px;
+      line-height: 30px;
+    }
+    li:nth-of-type(1){
+      width: 250px;
+    }
+    li:nth-of-type(2){
+      width: 400px;
+    }
+  }
+}
+
+.user-score{
+  margin-top: 15px;
+}
+.score-cont{
+  height: 126px;
+  padding-bottom: 10px;
+
+  .sc-sums{
+    position: relative;
+    float: left;
+    span{
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 31px;
+      line-height: 40px;
+      color: #fff;
+      text-align: center;
+    }
+    p{
+      font-size: 56px;
+      margin-left: 70px;
+      margin-top: 45px;
+    }
+  }
+
+  .sc-num-detail{
+    margin-left: 332px;
+    height: 106px;
+  }
+  .n-det-item{
+    float: left;
+    width: 50%;
+    height: 100%;
+    font-size: 16px;
+
+    span{
+      display: block;
+      height: 30px;
+      line-height: 30px;
+      color: $grayWhite;
+      margin-top: 10px;
+    }
+    .det-item-num{
+      height: 50px;
+      line-height: 50px;
+      color: $midgray;
+      i{
+        font-size: 30px;
+        color: $dark;
+        margin-right: 20px;
+      }
+    }
+    .det-item-gress{
+      width: 286px;
+      height: 5px;
+      background: #f2e7e8;
+      margin-top: 10px;
+      i{
+        display: block;
+        height: 5px;
+        background-color: $red;
+        width: 0;
+      }
+    }
+  }
+}
+
+.score-level{
+  height: 116px;
+  padding: 10px 30px;
+
+  .level-items{
+    float: left;
+    width: 50%;
+  }
+  .level-name{
+    color: $grayWhite;
+    height: 30px;
+    line-height: 30px;
+  }
+  .level-detail{
+    margin-top: 10px;
+  }
+  .level-num{
+    width: 100px;
+    padding-left: 20px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 40px;
+    color: $dark;
+    float: left;
+  }
+  .level-ruler{
+    margin-left: 100px;
+    padding: 17px 0;
+    height: 50px;
+    width: 336px;
+
+    span{
+      display: block;
+      background: url('/static/images/tiao.png') no-repeat;
+      position: relative;
+      height: 16px;
+    }
+
+    i{
+      display: block;
+      position: absolute;
+      width: 22px;
+      height: 30px;
+      margin-left: -11px;
+      bottom: 0;
+      left: 55%;
+    }
+  }
+}
+.score-ave{
+
+  .level-num{
+    width: 184px;
+    padding-left: 10px;
+  }
+  .level-cont{
+    margin-left: 184px;
+    color: $midDark;
+    line-height: 25px;
+
+    i{
+      color: $red;
+    }
+  }
+}
+
+.base-items{
+  height: 142px;
+  padding: 21px 0;
+
+  ul{
+    font-size: 0;
+  }
+  li{
+    display: inline-block;
+    vertical-align: middle;
+    height: 100px;
+    font-size: 16px;
+  }
+  li.base-score{
+    width: 236px;
+    font-size: 16px;
+    color: $grayWhite;
+    padding-left: 32px;
+    .sc-name{
+      line-height: 20px;
+    }
+    .sc-num{
+      font-size: 38px;
+      height: 60px;
+      line-height: 60px;
+      color: $dark;
+    }
+  }
+  li.base-all{
+    width: 400px;
+  }
+  .base-chart{
+    width: 100px;
+    height: 100%;
+    background: $red;
+    position: relative;
+    float: left;
+
+    .chart-pin{
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 1px;
+      background: $dark;
+      left: 40px;
+      top: 55%;
+      z-index: auto;
+    }
+  }
+  .base-infos{
+    margin-left: 132px;
+    margin-right: 10px;
+    color: $midDark;
+    .tag-title{
+      color: $grayWhite;
+    }
+    p{
+      line-height: 25px;
+      height: 25px;
+    }
+  }
+  .chart-tips{
+    position: absolute;
+    width: 70px;
+    height: 40px;
+    line-height: 20px;
+    color: $grayWhite;
+
+    i{
+      color: $dark;
+    }
+  }
+
+  .base-area{
+
+    .base-chart{
+      background: url('/static/images/zhu.png') no-repeat;
+      background-size: auto 100%;
+    }
+    .chart-tips{
+      left: 62px;
+      bottom: 0;
+    }
+
+    .base-infos{
+      margin-left: 162px;
+    }
+  }
+}
+
+.sitem-cont{
+  margin: 20px 0;
+
+  .cont-title{
+    color: $midgray;
+    height: 40px;
+  }
+
+  .sitem-tables{
+    overflow: hidden;
+    .table-items{
+      float: left;
+
+      &:first-child{
+        margin-right: 20px;
+        width: 582px;
+      }
+      &:last-child{
+        width: 398px;
+      }
+    }
+  }
+  .sitem-chart{
+    margin-top: 20px;
+    overflow: hidden;
+
+    .chart-items{
+      float: left;
+      width: 490px;
+      height: 302px;
+      border: 1px solid $tinyWhite;
+
+      &:first-child{
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .chart-line{
+    height: 314px;
+    margin: 20px 0;
+    border: 1px solid $tinyWhite;
+  }
+  .chart-bar{
+    height: 432px;
+    margin: 20px 0;
+    border: 1px solid $tinyWhite;
+  }
+
+  .echart-box{
+    font-size: 0;
+    margin-bottom: 20px;
+
+    .ech-items{
+      display: inline-block;
+      vertical-align: bottom;
+      font-size: 16px;
+      height: 298px;
+    }
+    .ech-title{
+      width: 40px;
+      background: $tinyWhite;
+      padding: 10px;
+      position: relative;
+      text-align: center;
+      color: $gray;
+      p{
+        position: relative;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        z-index: auto;
+      }
+    }
+    .ech-chart{
+      width: 480px;
+      border: 1px solid $tinyWhite;
+
+      &:last-child{
+        border-left: 0;
+      }
+    }
+  }
+  .ech-tips{
+    .ech-items{
+      height: 40px;
+      border: 0!important;
+      background: #fff!important;
+      text-align: center;
+      color: $midDark;
+    }
+  }
+
+  .chart-err{
+    height: 518px;
+    margin: 20px 0;
+    border: 1px solid $tinyWhite;
+
+    .chart-cont{
+      height: 448px;
+    }
+    .chart-intro{
+      height: 60px;
+      padding: 0 50px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 20px;
+      color: $gray;
+    }
+  }
+}

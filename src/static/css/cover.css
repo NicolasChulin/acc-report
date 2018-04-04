@@ -1,0 +1,39 @@
+.cover-header {
+  padding: 80px 80px 0;
+  height: 180px;
+  overflow: hidden; }
+  .cover-header .cover-logo {
+    width: 100px;
+    height: 100px;
+    float: left; }
+  .cover-header .cover-nums {
+    float: right;
+    margin-top: 40px;
+    color: #8d8d9e; }
+
+.cover-infos {
+  margin-top: 320px;
+  height: 240px;
+  background: #7a181b; }
+  .cover-infos .infos-detail {
+    margin-left: 20px;
+    padding: 13.5px 50px;
+    background: #fff;
+    width: 940px;
+    height: 240px; }
+    .cover-infos .infos-detail img {
+      display: block;
+      width: 783px;
+      height: 213px; }
+
+.cover-footer {
+  position: absolute;
+  width: 225px;
+  height: 244px;
+  right: 96px;
+  bottom: 93px;
+  text-align: right;
+  font-size: 40px; }
+  .cover-footer .ft-name {
+    font-size: 70px;
+    height: 139px; }

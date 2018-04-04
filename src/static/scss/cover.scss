@@ -1,0 +1,53 @@
+@import '../variables.scss';
+
+.cover-header{
+  padding: 80px 80px 0;
+  height: 180px;
+  overflow: hidden;
+
+  .cover-logo{
+    width: 100px;
+    height: 100px;
+    float: left;
+  }
+  .cover-nums{
+    float: right;
+    margin-top: 40px;
+    color: $gray;
+  }
+}
+
+.cover-infos{
+  margin-top: 320px;
+  height: 240px;
+  background: $red;
+
+  .infos-detail{
+    margin-left: 20px;
+    padding: 13.5px 50px;
+    background: #fff;
+    width: 940px;
+    height: 240px;
+
+    img{
+      display: block;
+      width: 783px;
+      height: 213px;
+    }
+  }
+}
+
+.cover-footer{
+  position: absolute;
+  width: 225px;
+  height: 244px;
+  right: 96px;
+  bottom: 93px;
+  text-align: right;
+  font-size: 40px;
+
+  .ft-name{
+    font-size: 70px;
+    height: 139px;
+  }
+}
