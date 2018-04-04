@@ -13,6 +13,7 @@ window.onload = function () {
       title: '考生错答题目的难度-知识情况',
       xaxis: ['16题', '11题', '6题', '15题', '20题', '14题', '18题', '1题', '9题', '7题'],
       labelBack: '#b14447',
+      // pointDom: document.getElementById('echartPoint'),
       nums: [
         {
           value: 0.23,
@@ -64,6 +65,7 @@ window.onload = function () {
       title: '考生错答题目的难度-能力（素质）情况',
       xaxis: ['16题', '11题', '6题', '15题', '20题', '14题', '18题', '1题', '9题', '7题'],
       labelBack: '#6f79c4',
+      // pointDom: document.getElementById('echartPointBlue'),
       nums: [
         {
           value: 0.23,

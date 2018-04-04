@@ -329,7 +329,6 @@ function getOptions (opt) {
         max: 1,
         splitNumber: 10,
         splitLine: {
-          interval: 3,
           lineStyle: {
             type: 'dashed'
           }
@@ -373,7 +372,10 @@ function getOptions (opt) {
             padding: 3,
           },
           itemStyle: {
-            color: opt.data.labelBack
+            color: '#fff',
+            borderType: 'dotted',
+            borderWidth: 5,
+            borderColor: opt.data.labelBack
           }
         }
       ]
