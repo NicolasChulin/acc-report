@@ -1,0 +1,10 @@
+electron-pdf http://localhost:8003/pages/cover.html ~/Desktop/cover.pdf
+electron-pdf http://localhost:8003/pages/catalog.html ~/Desktop/catalog.pdf
+electron-pdf http://localhost:8003/pages/introduction.html ~/Desktop/introduction.pdf
+
+electron-pdf http://localhost:8003/pages/score-item-one.html ~/Desktop/item-one.pdf
+electron-pdf http://localhost:8003/pages/score-item-two.html ~/Desktop/item-two.pdf
+electron-pdf http://localhost:8003/pages/score-item-twot.html ~/Desktop/item-twot.pdf
+electron-pdf http://localhost:8003/pages/score-item-three.html ~/Desktop/item-three.pdf
+electron-pdf http://localhost:8003/pages/score-item-four.html ~/Desktop/item-four.pdf
+electron-pdf http://localhost:8003/pages/score-main.html ~/Desktop/item-main.pdf

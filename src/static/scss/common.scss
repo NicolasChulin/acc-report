@@ -48,11 +48,6 @@ img.cover{
 }
 
 
-body{
-  padding: 30px;
-}
-
-
 @import '../variables.scss';
 
 .tag-title{
@@ -268,32 +263,5 @@ body{
   }
   .td-trow{
     height: 80px;
-  }
-}
-
-/* navs */
-ul.navs{
-  font-size: 0;
-  padding-bottom: 50px;
-  text-align: center;
-  li{
-    display: inline-block;
-    vertical-align: baseline;
-    height: 30px;
-    line-height: 30px;
-    padding: 0 20px;
-    color: $dark;
-    font-size: 16px;
-  }
-  a{
-    display: block;
-
-    &:hover{
-      color: $red;
-      text-decoration: underline;
-    }
-    &:visited{
-      color: $grayWhite;
-    }
   }
 }

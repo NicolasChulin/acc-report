@@ -11,17 +11,70 @@
   <title>acc-report</title>
 </head>
 <body>
-  <ul class="navs">
-    <li><a href="/pages/cover.html">封面</a></li>
-    <li><a href="/pages/catalog.html">目录</a></li>
-    <li><a href="/pages/introduction.html">前言</a></li>
-    <li><a href="/pages/score-main.html">总览</a></li>
-    <li><a href="/pages/score-item-one.html">01</a></li>
-    <li><a href="/pages/score-item-two.html">02-1</a></li>
-    <li><a href="/pages/score-item-twot.html">02-2</a></li>
-    <li><a href="/pages/score-item-three.html">03</a></li>
-    <li><a href="/pages/score-item-four.html">04</a></li>
+  <style media="screen">
+    /* navs */
+    ul.navs{
+      font-size: 0;
+      padding-bottom: 50px;
+      text-align: center;
+    }
+    li{
+      display: inline-block;
+      vertical-align: baseline;
+      height: 30px;
+      line-height: 30px;
+      padding: 0 20px;
+      color: #333;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    li:hover{
+      color: #7a181b;
+      text-decoration: underline;
+    }
+    .main-box{
+      width: 1160px;
+      height: 1641px;
+      margin: 20px auto;
+    }
+    #iframes{
+      display: block;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 0 10px #666;
+    }
+  </style>
+  <ul class="navs" id="navs">
+    <li data-href="/pages/cover.html">封面</li>
+    <li data-href="/pages/catalog.html">目录</li>
+    <li data-href="/pages/introduction.html">前言</li>
+    <li data-href="/pages/score-main.html">总览</li>
+    <li data-href="/pages/score-item-one.html">01</li>
+    <li data-href="/pages/score-item-two.html">02-1</li>
+    <li data-href="/pages/score-item-twot.html">02-2</li>
+    <li data-href="/pages/score-item-three.html">03</li>
+    <li data-href="/pages/score-item-four.html">04</li>
   </ul>
+  <div class="main-box">
+    <iframe id="iframes" src="" frameborder="0"></iframe>
+  </div>
+
+  <script type="text/javascript">
+    window.onload = function () {
+      var iframes = document.getElementById('iframes');
+      iframes.src = '/pages/cover.html';
+
+      var navlis = document.getElementById('navs').querySelectorAll('li')
+      navlis.forEach(function (item) {
+        item.addEventListener('click', function (event) {
+          var target = event.target
+          var href = target.getAttribute('data-href')
+          iframes.src = href
+        })
+      })
+
+    }
+  </script>
 
 </body>
 </html>
