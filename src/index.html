@@ -9,72 +9,55 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>acc-report</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/common.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/index.css">
 </head>
 <body>
-  <style media="screen">
-    /* navs */
-    ul.navs{
-      font-size: 0;
-      padding-bottom: 50px;
-      text-align: center;
-    }
-    li{
-      display: inline-block;
-      vertical-align: baseline;
-      height: 30px;
-      line-height: 30px;
-      padding: 0 20px;
-      color: #333;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    li:hover{
-      color: #7a181b;
-      text-decoration: underline;
-    }
-    .main-box{
-      width: 1160px;
-      height: 1641px;
-      margin: 20px auto;
-    }
-    #iframes{
-      display: block;
-      width: 100%;
-      height: 100%;
-      box-shadow: 0 0 10px #666;
-    }
-  </style>
-  <ul class="navs" id="navs">
-    <li data-href="/pages/cover.html">封面</li>
-    <li data-href="/pages/catalog.html">目录</li>
-    <li data-href="/pages/introduction.html">前言</li>
-    <li data-href="/pages/score-main.html">总览</li>
-    <li data-href="/pages/score-item-one.html">01</li>
-    <li data-href="/pages/score-item-two.html">02-1</li>
-    <li data-href="/pages/score-item-twot.html">02-2</li>
-    <li data-href="/pages/score-item-three.html">03</li>
-    <li data-href="/pages/score-item-four.html">04</li>
-  </ul>
-  <div class="main-box">
-    <iframe id="iframes" src="" frameborder="0"></iframe>
+  <div class="bd-navs">
+    <h1 class="bd-title">ACC 报告</h1>
+    <ul class="navs">
+      <li class="navs-li li-act"><span class="nav-name">封面</span></li>
+      <li class="navs-li"><span class="nav-name">目录</span></li>
+      <li class="navs-li"><span class="nav-name">前言</span></li>
+      <li class="navs-li"><span class="nav-name">总览</span></li>
+      <li class="navs-li">
+        <span class="nav-name">语文</span>
+        <ul class="navs-sub">
+          <li class="navs-sub-li">01</li>
+          <li class="navs-sub-li">02</li>
+          <li class="navs-sub-li">03</li>
+          <li class="navs-sub-li">04</li>
+          <li class="navs-sub-li">05</li>
+        </ul>
+      </li>
+      <!-- <li data-href="/pages/cover.html">封面</li>
+      <li data-href="/pages/catalog.html">目录</li>
+      <li data-href="/pages/introduction.html">前言</li>
+      <li data-href="/pages/score-main.html">总览</li>
+      <li data-href="/pages/score-item-one.html">01</li>
+      <li data-href="/pages/score-item-two.html">02-1</li>
+      <li data-href="/pages/score-item-twot.html">02-2</li>
+      <li data-href="/pages/score-item-three.html">03</li>
+      <li data-href="/pages/score-item-four.html">04</li> -->
+    </ul>
+  </div>
+  <div class="bd-header">
+    <h3>name</h3>
+  </div>
+  <div class="bd-main">
+    <div class="bd-m-cont">
+
+    </div>
   </div>
 
-  <script type="text/javascript">
-    window.onload = function () {
-      var iframes = document.getElementById('iframes');
-      iframes.src = '/pages/score-item-two.html';
 
-      var navlis = document.getElementById('navs').querySelectorAll('li')
-      navlis.forEach(function (item) {
-        item.addEventListener('click', function (event) {
-          var target = event.target
-          var href = target.getAttribute('data-href')
-          iframes.src = href
-        })
-      })
+  <script type="text/javascript" src="/static/libs/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="/static/libs/template.js"></script>
 
-    }
+  <script id="cover" type="text/html">
+
   </script>
+  <script type="text/javascript" src="/static/js/index.js"></script>
 
 </body>
 </html>
