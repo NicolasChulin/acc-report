@@ -2,6 +2,7 @@
 .svn/
 node_modules/
 dist/
+src/static/css/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

@@ -1,7 +1,7 @@
 
 function getEchart (dom) {
   return echarts.init(dom);
-  // return echarts.init(dom, null, {renderer: 'svg'});
+  // return echarts.init(dom, '', {renderer: 'svg'});
 }
 
 function getOptions (opt) {
@@ -381,6 +381,7 @@ function getOptions (opt) {
       ]
     }
   }
-
+  // 禁止载入动画
+  options['animation'] = false
   return options
 }

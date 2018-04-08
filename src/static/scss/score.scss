@@ -204,8 +204,7 @@
   }
   .base-chart{
     width: 100px;
-    height: 100%;
-    background: $red;
+    height: 100px;
     position: relative;
     float: left;
 
@@ -214,10 +213,18 @@
       position: absolute;
       width: 20px;
       height: 1px;
-      background: $dark;
+      background: $midDark;
       left: 40px;
       top: 55%;
-      z-index: auto;
+      z-index: 99;
+    }
+    .chart-svg{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      left: 0;
+      top: 0;
+      z-index: 8;
     }
   }
   .base-infos{
@@ -236,6 +243,11 @@
     position: absolute;
     width: 70px;
     height: 40px;
+    left: 50%;
+    top: 50%;
+    margin-left: -35px;
+    margin-top: -20px;
+    z-index: 9;
     line-height: 20px;
     color: $grayWhite;
 
@@ -251,6 +263,8 @@
       background-size: auto 100%;
     }
     .chart-tips{
+      margin-left: 0;
+      margin-top: 0;
       left: 62px;
       bottom: 0;
     }
