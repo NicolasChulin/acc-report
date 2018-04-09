@@ -13,51 +13,160 @@
   <link rel="stylesheet" type="text/css" href="/static/css/index.css">
 </head>
 <body>
-  <div class="bd-navs">
-    <h1 class="bd-title">ACC 报告</h1>
-    <ul class="navs">
-      <li class="navs-li li-act"><span class="nav-name">封面</span></li>
-      <li class="navs-li"><span class="nav-name">目录</span></li>
-      <li class="navs-li"><span class="nav-name">前言</span></li>
-      <li class="navs-li"><span class="nav-name">总览</span></li>
-      <li class="navs-li">
-        <span class="nav-name">语文</span>
-        <ul class="navs-sub">
-          <li class="navs-sub-li">01</li>
-          <li class="navs-sub-li">02</li>
-          <li class="navs-sub-li">03</li>
-          <li class="navs-sub-li">04</li>
-          <li class="navs-sub-li">05</li>
-        </ul>
-      </li>
-      <!-- <li data-href="/pages/cover.html">封面</li>
-      <li data-href="/pages/catalog.html">目录</li>
-      <li data-href="/pages/introduction.html">前言</li>
-      <li data-href="/pages/score-main.html">总览</li>
-      <li data-href="/pages/score-item-one.html">01</li>
-      <li data-href="/pages/score-item-two.html">02-1</li>
-      <li data-href="/pages/score-item-twot.html">02-2</li>
-      <li data-href="/pages/score-item-three.html">03</li>
-      <li data-href="/pages/score-item-four.html">04</li> -->
-    </ul>
-  </div>
   <div class="bd-header">
-    <h3>name</h3>
+    <h1 class="bd-title">ACC 报告</h1>
+    <h3 class="bd-sub-title" id="bd-sub-title"></h3>
   </div>
+  <div class="bd-navs" id="bd-navs">
+  </div>
+
   <div class="bd-main">
-    <div class="bd-m-cont">
+    <div class="bd-m-cont" id="bd-m-cont">
 
     </div>
   </div>
 
+  <script src="/static/libs/require.min.js" data-main="/static/js/index" defer async="true"></script>
 
-  <script type="text/javascript" src="/static/libs/jquery-2.1.4.min.js"></script>
-  <script type="text/javascript" src="/static/libs/template.js"></script>
+  <script id="menus" type="text/html">
+    <ul class="navs">
+      <% for (var i =0; i < menus.length; i++) { %>
+        <li class="navs-li" data-page="<%:=menus[i].page%>" data-name="<%:=menus[i].name%>">
+          <span class="nav-name"><%:=menus[i].name%></span>
+
+          <% if (menus[i].subs) { %>
+            <% var subs = menus[i].subs %>
+            <ul class="navs-sub">
+            <% for (var j = 0; j < subs.length; j++) { %>
+              <li class="navs-sub-li" data-page="<%:=subs[j].page%>" data-name="<%:=subs[j].name%>"><%:=subs[j].name%></li>
+            <% } %>
+            </ul>
+          <% } %>
+        </li>
+      <% } %>
+    </ul>
+  </script>
 
   <script id="cover" type="text/html">
+    <div class="page-box">
+      <div class="cover-header">
+        <div class="cover-logo">
+          <img class="cover" src="/static/images/logo.png" alt="logo">
+        </div>
+        <p class="cover-nums"><%:=cover.reportNo%>（报告编号）</p>
+      </div>
+      <div class="cover-infos">
+        <div class="infos-detail">
+          <img src="/static/images/title.png" alt="title.png">
+        </div>
+      </div>
+      <div class="cover-footer">
+        <p class="ft-name"><%:=cover.username%></p>
+        <p class="ft-school"><%:=cover.school%></p>
+        <p class="ft-time"><%:=cover.createTime%></p>
+      </div>
+    </div>
+  </script>
+
+  <script id="catalog" type="text/html">
+    <div class="page-box">
+      <div class="cat-back"></div>
+      <div class="cat-title page-top-tag">
+        <h1>目录</h1>
+      </div>
+      <div class="cat-list">
+        <ul>
+          <li>
+            <span>前言</span>
+            <span>01</span>
+          </li>
+          <li>
+            <span>测评结果总体概览</span>
+            <span>02</span>
+          </li>
+          <li>
+            <span>语文评测结果分析</span>
+            <span>03</span>
+          </li>
+          <li>
+            <span>数学评测结果分析</span>
+            <span>04</span>
+          </li>
+          <li>
+            <span>英语评测结果分析</span>
+            <span>05</span>
+          </li>
+          <li>
+            <span>物理评测结果分析</span>
+            <span>06</span>
+          </li>
+          <li>
+            <span>化学评测结果分析</span>
+            <span>07</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </script>
+  <script id="introduction" type="text/html">
+    <div class="page-box">
+      <div class="intr-title page-top-tag">
+        <h1>前言</h1>
+      </div>
+      <div class="intr-detail">
+        <p>核心能力测评（ACC，Assessment of Core Competencies）由北京大学教育学院发起，旨在满足高校人才培养与评价需求，指导高品质高中建设，探索符合中国国情的拔尖人才培养模式的大型教育实验研究项目。ACC项目组于2017年12月17日举行由全国21个省份高水平学生参加的学科测试，重点考察考生在问题情境下应用知识的水平及高阶思维能力。ACC项目组采用创新的命题思路，遵守严谨科学的命题流程，依托智能化考试平台施测，使用先进的教育测量学理论、方法与技术对考生进行评价分析，为学生学习与学校教学及教管部门管理提供反馈。</p>
+        <h3>ACC项目测试科目包括：</h3>
+        <p>1、基础能力测试（语文素养与应用、数学科学与探究、英语能力与思辨），测试时间共3小时；</p>
+        <p>2、可选科目包括人文素养（历史、政治）和科学素养（物理、化学），学生2选1参加测试，测试时间2小时。</p>
+
+        <h3>阅读本报告请注意以下事项：</h3>
+        <p>1、测评分析基于考生作答数据，<span>题目难度、作答干扰、阅读速度、答题态度、心理与生理状态均会影响考生作答结果。因此，报告中的分析、建议等仅作参考，请客观、谨慎对待测评结果。</span></p>
+        <p>2、各学科满分100分，总分500分。</p>
+
+        <h3>个人报告内容包括：</h3>
+        <p>1、学生测评结果整体情况（总成绩、各学科成绩以及相应的百分等级排名等）；</p>
+        <p>2、学生各学科测评结果的详细剖析：</p>
+        <ol>
+          <li>&gt; 本学科重点知识掌握情况；</li>
+          <li>&gt; 学科核心能力或素养的表现；</li>
+          <li>&gt; 不同难度题目上的表现。</li>
+        </ol>
+
+        <h3>报告使用声明：</h3>
+        <p>1、本报告内容属于个人隐私，请注意保密。</p>
+        <p>2、本报告包含的内容（包括但不限于文本、数据、logo、图片等）的所有权受版权、商标及其他知识产权法的保护，归ACC项目组所有。未经ACC项目组书面许可，不得修改、复制、翻译、分发、公开、出售任何从报告中获取的信息、设计。</p>
+        <p>3、更多有关信息请联系项目组，联系方式：QQ:2856384351；咨询电话15510538231。</p>
+      </div>
+
+      <div class="page-bot-num">01</div>
+    </div>
+  </script>
+  <script id="overview" type="text/html">
 
   </script>
-  <script type="text/javascript" src="/static/js/index.js"></script>
+  <script id="item-one" type="text/html">
+    <div class="page-box score-box">
+      <div class="page-head">
+        <span>高中生发展与核心能力评测（ACC）</span>
+        <span>核心能力评测（ACC）个人评价报告</span>
+      </div>
+
+      <div class="page-user-info">
+        <h3 class="info-title tag-title">考生成绩</h3>
+        <ul class="info-list">
+          <li>姓名: <%:=overview.user.name%></li>
+          <li>准考证号：<%:=overview.user.zkzh%></li>
+          <li>选&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;考：<%:=overview.user.choice%></li>
+        </ul>
+        <ul class="info-list">
+          <li>学校：<%:=overview.user.school%></li>
+          <li>身份证号：<%:=overview.user.idno%></li>
+          <li>考试时间：<%:=overview.user.examTime%></li>
+        </ul>
+      </div>
+
+    </div>
+  </script>
 
 </body>
 </html>

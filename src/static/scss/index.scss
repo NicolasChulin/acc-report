@@ -1,23 +1,18 @@
-/* navs */
+@import '../variables.scss';
 
+/* navs */
 .bd-navs{
   position: fixed;
   height: 100%;
   width: 200px;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 98;
   overflow: auto;
-  background: #2A3542;
+  background: #fff;
+  padding-top: 60px;
+  box-shadow: 0 0 1px #999;
 
-  .bd-title{
-    height: 60px;
-    line-height: 60px;
-    width: 200px;
-    font-size: 24px;
-    text-align: center;
-    color: #fff;
-  }
   ul.navs{
     padding: 30px 10px;
     font-size: 14px;
@@ -26,15 +21,24 @@
     padding: 0 20px;
     margin-bottom: 5px;
     min-height: 40px;
-    color: #fff;
+    color: #333;
     border-radius: 3px;
     cursor: pointer;
 
-    &:hover{
-      background-color: #35404D;
-    }
+    &:hover,
     &.li-act{
-      background-color: #35404D;
+      background-color: $grayRed;
+
+      span{
+        color: $red;
+        font-weight: 600;
+      }
+    }
+
+    &.li-subs-open{
+      ul.navs-sub{
+        display: block;
+      }
     }
   }
 
@@ -50,9 +54,14 @@
     padding: 0 20px;
     height: 30px;
     line-height: 30px;
+    color: #666;
 
     &:hover{
-      color: #FF6C60;
+      color: #999;
+    }
+    &.li-act{
+      color: $red;
+      font-weight: 600;
     }
   }
 
@@ -65,23 +74,40 @@
   top: 0;
   left: 0;
   padding-left: 220px;
-  z-index: 98;
-  background: #2A3542;
-  color: #fff;
+  z-index: 99;
+  box-shadow: 0 0 1px #999;
+  background: #fff;
+
+  .bd-title{
+    position: absolute;
+    width: 200px;
+    height: 60px;
+    left: 0;
+    top: 0;
+    line-height: 60px;
+    font-size: 24px;
+    text-align: center;
+    color: $red;
+  }
+  .bd-sub-title{
+    padding: 15px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+  }
 }
 
 .bd-main{
-  padding: 60px 20px 20px 200px;
+  padding: 60px 0 20px 200px;
   min-height: 1000px;
 }
-.main-box{
+.bd-m-cont{
+  margin: 30px auto;
   width: 1160px;
   height: 1641px;
-  margin: 20px auto;
 }
-#iframes{
-  display: block;
-  width: 100%;
-  height: 100%;
-  box-shadow: 0 0 10px #b0b0b0;
-}
+
+@import 'cover.scss';
+@import 'catalog.scss';
+@import 'introduction.scss';
+@import 'score.scss';
