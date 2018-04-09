@@ -51,9 +51,10 @@
     display: none;
   }
   li.navs-sub-li{
-    padding: 0 20px;
-    height: 30px;
-    line-height: 30px;
+    padding: 5px 0 5px 20px;
+    word-wrap: break-word;
+    min-height: 30px;
+    line-height: 20px;
     color: #666;
 
     &:hover{

@@ -27,7 +27,8 @@
   </div>
 
   <script src="/static/libs/require.min.js" data-main="/static/js/index" defer async="true"></script>
-
+  <!-- templates  -->
+  <!-- menus -->
   <script id="menus" type="text/html">
     <ul class="navs">
       <% for (var i =0; i < menus.length; i++) { %>
@@ -46,7 +47,7 @@
       <% } %>
     </ul>
   </script>
-
+  <!-- cover -->
   <script id="cover" type="text/html">
     <div class="page-box">
       <div class="cover-header">
@@ -67,7 +68,7 @@
       </div>
     </div>
   </script>
-
+  <!-- catalog -->
   <script id="catalog" type="text/html">
     <div class="page-box">
       <div class="cat-back"></div>
@@ -108,6 +109,7 @@
       </div>
     </div>
   </script>
+  <!-- introduction -->
   <script id="introduction" type="text/html">
     <div class="page-box">
       <div class="intr-title page-top-tag">
@@ -141,9 +143,183 @@
       <div class="page-bot-num">01</div>
     </div>
   </script>
+  <!-- overview -->
   <script id="overview" type="text/html">
+    <div class="page-box score-box">
+      <div class="page-head">
+        <span>高中生发展与核心能力评测（ACC）</span>
+        <span>核心能力评测（ACC）个人评价报告</span>
+      </div>
+      <% var user = overview.user %>
+      <div class="page-user-info">
+        <h3 class="info-title tag-title">考生成绩</h3>
+        <ul class="info-list">
+          <li>姓名: <%:=user.name%></li>
+          <li>准考证号：<%:=user.zkzh%></li>
+          <li>选&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;考：<%:=user.choice%></li>
+        </ul>
+        <ul class="info-list">
+          <li>学校：<%:=user.school%></li>
+          <li>身份证号：<%:=user.idno%></li>
+          <li>考试时间：<%:=user.examTime%></li>
+        </ul>
+      </div>
 
+      <% var score = overview.score %>
+      <div class="user-score">
+        <div class="page-score-title">
+          <h3 class="s-title">考生成绩</h3>
+          <span>（备注：如果考生有科目缺考，总分的百分比排名以及水平等级仅供参考）</span>
+        </div>
+        <div class="score-cont">
+          <div class="sc-sums">
+            <span class="bg-title-74">总成绩</span>
+            <p><%:=score.sum%></p>
+          </div>
+          <div class="sc-num-detail">
+            <div class="n-det-item">
+              <span>总成绩超过：</span>
+              <p class="det-item-num"><i><%:=score.exceedAll%></i>的全体考生</p>
+              <p class="det-item-gress"><i style="width: <%:=score.exceedAll%>"></i></p>
+            </div>
+            <div class="n-det-item">
+              <span>总成绩超过：</span>
+              <p class="det-item-num"><i><%:=score.exceedArea%></i>的本省考生</p>
+              <p class="det-item-gress"><i style="width: <%:=score.exceedArea%>"></i></p>
+            </div>
+          </div>
+        </div>
+        <div class="score-level">
+          <% var level = overview.score.level %>
+          <div class="level-items">
+            <p class="level-name">总成绩在全体的水平</p>
+            <div class="level-detail">
+              <p class="level-num"><%:=level.all%></p>
+              <p class="level-ruler"><span><i class="bg-biao" style="left: <%:=level.allGress%>"></i></span></p>
+            </div>
+          </div>
+          <div class="level-items">
+            <p class="level-name">总成绩在本省的水平</p>
+            <div class="level-detail">
+              <p class="level-num"><%:=level.area%></p>
+              <p class="level-ruler"><span><i class="bg-biao" style="left: <%:=level.areaGress%>"></i></span></p>
+            </div>
+          </div>
+        </div>
+        <div class="score-level score-ave">
+          <% var all = overview.score.all %>
+          <div class="level-items">
+            <p class="level-name">全体考生平均分</p>
+            <div class="level-detail">
+              <p class="level-num"><%:=all.ave%></p>
+              <p class="level-cont">
+                <span>全体考生有效人数：<i><%:=all.unum%></i></span><br>
+                <span>全体考生的最高分：<%:=all.max%></span>
+              </p>
+            </div>
+          </div>
+          <% var area = overview.score.area %>
+          <div class="level-items">
+            <p class="level-name">本省考生平均分</p>
+            <div class="level-detail">
+              <p class="level-num"><%:=area.ave%></p>
+              <p class="level-cont">
+                <span>本省考生有效人数：<i><%:=area.unum%></i></span><br>
+                <span>本省考生的最高分：<%:=area.max%></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% var bases = overview.bases %>
+      <div class="user-base">
+        <div class="page-score-title">
+          <h3 class="s-title">基础能力</h3>
+        </div>
+        <% for (var i = 0; i < bases.length; i++) {%>
+        <% var item = bases[i] %>
+        <div class="base-items">
+          <ul>
+            <li class="base-score">
+              <p class="sc-name"><%:=item.subjectName%></p>
+              <p class="sc-tips">分数 -</p>
+              <p class="sc-num"><%:=item.score%></p>
+            </li>
+            <li class="base-all">
+              <div class="base-chart base-chart-cont" echart-ratio="<%:=item.all.level%>">
+                <p class="chart-tips">超过<i><%:=item.all.level%></i>全体考生</p>
+              </div>
+              <div class="base-infos">
+                <p class="tag-title">全体概况</p>
+                <p>有效人数：<%:=item.all.unum%>人</p>
+                <p>平均分数：<%:=item.all.ave%></p>
+                <p>最高分数：<%:=item.all.max%></p>
+              </div>
+            </li>
+            <li class="base-area">
+              <div class="base-chart">
+                <p class="chart-tips">超过<i><%:=item.area.level%></i>本省考生</p>
+                <span class="chart-pin" style="top: <%:=item.area.level%>"></span>
+              </div>
+              <div class="base-infos">
+                <p class="tag-title">本省概况</p>
+                <p>有效人数：<%:=item.area.unum%>人</p>
+                <p>平均分数：<%:=item.area.ave%></p>
+                <p>最高分数：<%:=item.area.max%></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <%}%>
+      </div>
+
+      <% var science = overview.science %>
+      <div class="user-base">
+        <div class="page-score-title">
+          <h3 class="s-title">基础能力</h3>
+        </div>
+        <% for (var i = 0; i < science.length; i++) {%>
+        <% var item = science[i] %>
+        <div class="base-items">
+          <ul>
+            <li class="base-score">
+              <p class="sc-name"><%:=item.subjectName%></p>
+              <p class="sc-tips">分数 -</p>
+              <p class="sc-num"><%:=item.score%></p>
+            </li>
+            <li class="base-all">
+              <div class="base-chart base-chart-cont" echart-ratio="<%:=item.all.level%>">
+                <p class="chart-tips">超过<i><%:=item.all.level%>%</i>全体考生</p>
+              </div>
+              <div class="base-infos">
+                <p class="tag-title">全体概况</p>
+                <p>有效人数：<%:=item.all.unum%>人</p>
+                <p>平均分数：<%:=item.all.ave%></p>
+                <p>最高分数：<%:=item.all.max%></p>
+              </div>
+            </li>
+            <li class="base-area">
+              <div class="base-chart">
+                <p class="chart-tips">超过<i><%:=item.area.level%></i>本省考生</p>
+                <span class="chart-pin" style="top: <%:=item.area.level%>"></span>
+              </div>
+              <div class="base-infos">
+                <p class="tag-title">本省概况</p>
+                <p>有效人数：<%:=item.area.unum%>人</p>
+                <p>平均分数：<%:=item.area.ave%></p>
+                <p>最高分数：<%:=item.area.max%></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <%}%>
+      </div>
+
+    </div>
   </script>
+
+  <!-- category part one -->
   <script id="item-one" type="text/html">
     <div class="page-box score-box">
       <div class="page-head">
@@ -151,22 +327,380 @@
         <span>核心能力评测（ACC）个人评价报告</span>
       </div>
 
-      <div class="page-user-info">
-        <h3 class="info-title tag-title">考生成绩</h3>
-        <ul class="info-list">
-          <li>姓名: <%:=overview.user.name%></li>
-          <li>准考证号：<%:=overview.user.zkzh%></li>
-          <li>选&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;考：<%:=overview.user.choice%></li>
-        </ul>
-        <ul class="info-list">
-          <li>学校：<%:=overview.user.school%></li>
-          <li>身份证号：<%:=overview.user.idno%></li>
-          <li>考试时间：<%:=overview.user.examTime%></li>
-        </ul>
+      <% var header = items.header %>
+      <div class="page-head-title">
+        <p class="pd-num">01</p>
+        <div class="pd-info">
+          <h1><%:=header.title%></h1>
+          <p><%:=header.description%></p>
+        </div>
       </div>
+
+      <% var all = items.all %>
+      <div class="sitem-cont">
+        <h3 class="cont-title tag-title">与全体考生比较</h3>
+        <div class="sitem-tables">
+          <div class="table-items">
+            <table class="table" cellspacing="0">
+              <thead>
+                <tr>
+                  <th colspan="7">考生知识模块答对率与全体考生的比较</th>
+                </tr>
+              </thead>
+              <% var ddrTables = all.ddrTables %>
+              <tbody>
+                <tr class="th-sub">
+                  <td rowspan="2">编号</td>
+                  <td rowspan="2">知识模块</td>
+                  <td rowspan="2">题数</td>
+                  <td colspan="4">答对率</td>
+                </tr>
+                <tr class="th-sub">
+                  <td>本人</td>
+                  <td>平均</td>
+                  <td>同水平</td>
+                  <td>A等考生</td>
+                </tr>
+                <% for (var i = 0; i < ddrTables.length; i++) {%>
+                <% var item = ddrTables[i] %>
+                <tr>
+                  <td><%:=item.no%></td>
+                  <td><%:=item.name%></td>
+                  <td><%:=item.topicNum%></td>
+                  <td><%:=item.user%></td>
+                  <td><%:=item.ave%></td>
+                  <td><%:=item.equal%></td>
+                  <td><%:=item.aLevel%></td>
+                </tr>
+                <%}%>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-items">
+            <table class="table" cellspacing="0">
+              <thead>
+                <tr>
+                  <th colspan="3">考生知识模块得分率与全体考生的比较</th>
+                </tr>
+              </thead>
+              <% var dfrTables = all.dfrTables %>
+              <tbody>
+                <tr class="th-twor">
+                  <td rowspan="2"></td>
+                  <td rowspan="2">掌握相对较好</td>
+                  <td rowspan="2">有待加强</td>
+                </tr>
+                <tr></tr>
+                <% for (var i = 0; i < dfrTables.length; i++) {%>
+                <% var item = dfrTables[i] %>
+                <tr>
+                  <td><%:=item.name%></td>
+                  <td><%:=item.good%></td>
+                  <td><%:=item.weak%></td>
+                </tr>
+                <%}%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="sitem-chart">
+          <div class="chart-items" id="all-line-chart"></div>
+          <div class="chart-items" id="all-bar-chart"></div>
+        </div>
+      </div>
+
+      <% var area = items.area %>
+      <div class="sitem-cont">
+        <h3 class="cont-title tag-title">与本省考生比较</h3>
+        <div class="sitem-tables">
+          <div class="table-items">
+            <table class="table" cellspacing="0">
+              <thead>
+                <tr>
+                  <th colspan="7">考生知识模块答对率与全体考生的比较</th>
+                </tr>
+              </thead>
+              <% var ddrTables = all.ddrTables %>
+              <tbody>
+                <tr class="th-sub">
+                  <td rowspan="2">编号</td>
+                  <td rowspan="2">知识模块</td>
+                  <td rowspan="2">题数</td>
+                  <td colspan="4">答对率</td>
+                </tr>
+                <tr class="th-sub">
+                  <td>本人</td>
+                  <td>平均</td>
+                  <td>同水平</td>
+                  <td>A等考生</td>
+                </tr>
+                <% for (var i = 0; i < ddrTables.length; i++) {%>
+                <% var item = ddrTables[i] %>
+                <tr>
+                  <td><%:=item.no%></td>
+                  <td><%:=item.name%></td>
+                  <td><%:=item.topicNum%></td>
+                  <td><%:=item.user%></td>
+                  <td><%:=item.ave%></td>
+                  <td><%:=item.equal%></td>
+                  <td><%:=item.aLevel%></td>
+                </tr>
+                <%}%>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-items">
+            <table class="table" cellspacing="0">
+              <thead>
+                <tr>
+                  <th colspan="3">考生知识模块得分率与全体考生的比较</th>
+                </tr>
+              </thead>
+              <% var dfrTables = all.dfrTables %>
+              <tbody>
+                <tr class="th-twor">
+                  <td rowspan="2"></td>
+                  <td rowspan="2">掌握相对较好</td>
+                  <td rowspan="2">有待加强</td>
+                </tr>
+                <tr></tr>
+                <% for (var i = 0; i < dfrTables.length; i++) {%>
+                <% var item = dfrTables[i] %>
+                <tr>
+                  <td><%:=item.name%></td>
+                  <td><%:=item.good%></td>
+                  <td><%:=item.weak%></td>
+                </tr>
+                <%}%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="sitem-chart">
+          <div class="chart-items" id="area-line-chart"></div>
+          <div class="chart-items" id="area-bar-chart"></div>
+        </div>
+      </div>
+
+      <div class="page-footer-tips">
+        <span class="tips-name bg-title-64">备注</span>
+        <div class="tips-detail">
+          <p>同水平考生：相同百分比排名（百分等级）的考生群体；</p>
+          <p>A等考生：排名前25%的考生群体；</p>
+        </div>
+      </div>
+
+      <div class="page-bot-num">03/1</div>
+    </div>
+  </script>
+  <!-- category part two -->
+  <script id="item-two" type="text/html">
+    <div class="page-box score-box">
+      <div class="page-head">
+        <span>高中生发展与核心能力评测（ACC）</span>
+        <span>核心能力评测（ACC）个人评价报告</span>
+      </div>
+
+      <% var header = items.header %>
+      <div class="page-head-title">
+        <p class="pd-num">02</p>
+        <div class="pd-info">
+          <h1><%:=header.title%></h1>
+          <p><%:=header.description%></p>
+        </div>
+      </div>
+
+      <% var all = items.all %>
+      <div class="sitem-cont">
+        <h3 class="cont-title tag-title"><%:=items.tag%></h3>
+        <div class="sitem-tables">
+          <div class="table-items">
+            <table class="table" cellspacing="0">
+              <thead>
+                <tr>
+                  <th colspan="7">考生各能力（素养）模块答对率与全体考生的比较</th>
+                </tr>
+              </thead>
+              <% var ddrTables = all.ddrTables %>
+              <tbody>
+                <tr class="th-sub">
+                  <td rowspan="2">编号</td>
+                  <td rowspan="2">知识模块</td>
+                  <td rowspan="2">题数</td>
+                  <td colspan="4">答对率</td>
+                </tr>
+                <tr class="th-sub">
+                  <td>本人</td>
+                  <td>平均</td>
+                  <td>同水平</td>
+                  <td>A等考生</td>
+                </tr>
+                <% for (var i = 0; i < ddrTables.length; i++) {%>
+                <% var item = ddrTables[i] %>
+                <tr>
+                  <td><%:=item.no%></td>
+                  <td><%:=item.name%></td>
+                  <td><%:=item.topicNum%></td>
+                  <td><%:=item.user%></td>
+                  <td><%:=item.ave%></td>
+                  <td><%:=item.equal%></td>
+                  <td><%:=item.aLevel%></td>
+                </tr>
+                <%}%>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-items">
+            <table class="table" cellspacing="0">
+              <thead>
+                <tr>
+                  <th colspan="3">考生知识模块得分率与全体考生的比较</th>
+                </tr>
+              </thead>
+              <% var dfrTables = all.dfrTables %>
+              <tbody>
+                <tr>
+                  <td rowspan="2"></td>
+                  <td rowspan="2">掌握相对较好</td>
+                  <td rowspan="2">有待加强</td>
+                </tr>
+                <tr></tr>
+                <% for (var i = 0; i < dfrTables.length; i++) {%>
+                <% var item = dfrTables[i] %>
+                <tr class="td-trow">
+                  <td><%:=item.name%></td>
+                  <td><%:=item.good%></td>
+                  <td><%:=item.weak%></td>
+                </tr>
+                <%}%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="chart-line" id="all-line"></div>
+        <div class="chart-bar" id="all-bar"></div>
+      </div>
+
+      <div class="page-footer-tips">
+        <span class="tips-name bg-title-64">备注</span>
+        <div class="tips-detail">
+          <p>同水平考生：相同百分比排名（百分等级）的考生群体；</p>
+          <p>A等考生：排名前25%的考生群体；</p>
+        </div>
+      </div>
+
+      <div class="page-bot-num">03/2</div>
+    </div>
+  </script>
+  <!-- category part four -->
+  <script id="item-four" type="text/html">
+    <div class="page-box score-box">
+      <div class="page-head">
+        <span>高中生发展与核心能力评测（ACC）</span>
+        <span>核心能力评测（ACC）个人评价报告</span>
+      </div>
+
+      <div class="page-head-title">
+        <p class="pd-num">03</p>
+        <div class="pd-info pd-info-mid">
+          <h1>考生在各难度水平题目上的作答情况分析</h1>
+        </div>
+      </div>
+
+      <div class="sitem-cont">
+        <div class="echart-box">
+          <div class="ech-items ech-title"><p>难题<%:=items.hard.topicNum%>道题</p></div>
+          <div class="ech-items ech-chart" id="hard-all"></div>
+          <div class="ech-items ech-chart" id="hard-area"></div>
+        </div>
+        <div class="echart-box">
+          <div class="ech-items ech-title"><p>中等难度题<%:=items.mid.topicNum%>道题</p></div>
+          <div class="ech-items ech-chart" id="mid-all"></div>
+          <div class="ech-items ech-chart" id="mid-area"></div>
+        </div>
+        <div class="echart-box">
+          <div class="ech-items ech-title"><p>容易题<%:=items.easy.topicNum%>道题</p></div>
+          <div class="ech-items ech-chart" id="easy-all"></div>
+          <div class="ech-items ech-chart" id="easy-area"></div>
+        </div>
+        <div class="echart-box ech-tips">
+          <div class="ech-items ech-title"></div>
+          <div class="ech-items ech-chart">得分率</div>
+          <div class="ech-items ech-chart">得分率</div>
+        </div>
+      </div>
+
+
+      <div class="page-footer-tips">
+        <span class="tips-name bg-title-64">备注</span>
+        <div class="tips-detail">
+          <p>难题：难度值在[0-0.3）之间；</p>
+          <p>中等难度题：难度值在[0.3-0.7]之间；</p>
+          <p>容易题：难度值在0.7以上；</p>
+          <p>题目难易度是以考生平均得分率为指标，与参加本次测试的考生（以各重点校中上水平为主要群体）水平有关。因此，这里计算出来题目难度较小，并不代表在常规考生中该题也简单。</p>
+        </div>
+      </div>
+
+      <div class="page-bot-num">03/3</div>
 
     </div>
   </script>
+  <!-- category part five -->
+  <script id="item-five" type="text/html">
+    <div class="page-box score-box">
+      <div class="page-head">
+        <span>高中生发展与核心能力评测（ACC）</span>
+        <span>核心能力评测（ACC）个人评价报告</span>
+      </div>
 
+      <div class="page-head-title">
+        <p class="pd-num">04</p>
+        <div class="pd-info pd-info-mid">
+          <h1>考生错答题目难度情况分析</h1>
+        </div>
+      </div>
+
+      <div class="sitem-cont">
+        <div class="chart-err">
+          <div class="chart-cont" id="err-point"></div>
+          <div class="chart-intro">
+            <p>
+              <span>知识模块：</span>
+              <% var points = items.point.tips %>
+              <% for (var i = 0; i < points.length; i++) { %>
+              <span><%:=points[i].name%>-<%:=points[i].cont%></span>
+              <% } %>
+            </p>
+          </div>
+        </div>
+        <div class="chart-err">
+          <div class="chart-cont" id="err-capa"></div>
+          <div class="chart-intro">
+            <p>
+              <span>能力（素质）模块：</span>
+              <% var capas = items.capa.tips %>
+              <% for (var i = 0; i < capas.length; i++) { %>
+              <span><%:=capas[i].name%>-<%:=capas[i].cont%>;</span>
+              <%}%>
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="page-footer-tips">
+        <span class="tips-name bg-title-64">备注</span>
+        <div class="tips-detail">
+          <p>难题：难度值在[0-0.3）之间；</p>
+          <p>中等难度题：难度值在[0.3-0.7]之间；</p>
+          <p>容易题：难度值在0.7以上；</p>
+          <p>题目难易度是以考生平均得分率为指标，与参加本次测试的考生（以各重点校中上水平为主要群体）水平有关。因此，这里计算出来题目难度较小，并不代表在常规考生中该题也简单。</p>
+        </div>
+      </div>
+
+      <div class="page-bot-num">03/4</div>
+
+    </div>
+  </script>
 </body>
 </html>
