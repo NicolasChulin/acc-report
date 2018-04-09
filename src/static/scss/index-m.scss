@@ -1,0 +1,36 @@
+@media (max-width: 992px) {
+
+  .bd-header{
+    padding: 0;
+    height: 40px;
+
+    .bd-title,
+    .bd-navs{
+      display: none;
+    }
+    .bd-sub-title{
+      padding: 5px;
+    }
+    .sub-t-btn{
+      display: block;
+      width: 30px;
+      height: 30px;
+      top: 5px;
+      right: 10px;
+    }
+  }
+  .bd-navs{
+    display: none;
+    width: 100%;
+  }
+
+  .bd-main{
+    padding: 40px 0 0;
+    width: 100%;
+    overflow: auto;
+  }
+  .bd-m-cont{
+    margin: 0 auto;
+    transform-origin: 0 0;
+  }
+}

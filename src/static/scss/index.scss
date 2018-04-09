@@ -96,11 +96,21 @@
     text-align: center;
     font-size: 14px;
   }
+  .sub-t-btn{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background: $red;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    display: none;
+  }
 }
 
 .bd-main{
   padding: 60px 0 20px 200px;
-  min-height: 1000px;
 }
 .bd-m-cont{
   margin: 30px auto;
@@ -112,3 +122,4 @@
 @import 'catalog.scss';
 @import 'introduction.scss';
 @import 'score.scss';
+@import 'index-m.scss';

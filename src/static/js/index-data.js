@@ -656,6 +656,7 @@ define(function () {
       }
     }
   }
+
   return {
     menus: menus,
     cover: cover,

@@ -8,17 +8,46 @@ require.config({
 })
 
 require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, indexData, echarts) {
-
+  var isSmallScreen = false;
   var $bdmCont = $('#bd-m-cont');
+  var $subtBtn = $('#sub-t-btn');
+  var $navs = $('#bd-navs');
 
+  resizeEvent();
   createMenus();
-  $('#bd-navs').find('.navs-li').first().trigger('click');
+  $navs.find('.navs-li').first().trigger('click');
+
+  $subtBtn.on('click', function () {
+    $navs.fadeToggle();
+  });
+
+  function resizeEvent () {
+    var docEl     = document.documentElement,
+    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+    var recalc = function() {
+      var clientWidth = docEl.clientWidth;
+      isSmallScreen = clientWidth <= 992;
+      if (isSmallScreen) {
+        var rate = (clientWidth / 1160).toFixed(2);
+        var scale = 'scale(' + rate + ',' + rate +')';
+        $bdmCont.css({'transform': scale});
+      } else {
+        $bdmCont.css({'transform': ''});
+      }
+    }
+
+    recalc();
+    if (!document.addEventListener) return;
+    window.addEventListener(resizeEvt, recalc, false);
+    document.addEventListener('DOMContentLoaded', recalc, false);
+  }
+
 
   // 制作导航
   function createMenus () {
     var menusTmpl = $('#menus').html();
     var tmplDom = tmpl(menusTmpl, {menus: indexData.menus});
-    var $navs = $('#bd-navs');
+
     $navs.append(tmplDom);
 
     // 事件绑定
@@ -26,6 +55,9 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
       e.stopPropagation();
       $(this).addClass('li-act').siblings().removeClass('li-act');
       changeSubsTitle($(this), true);
+      if (isSmallScreen) {
+        $navs.fadeOut();
+      }
     });
 
     $navs.on('click', '.navs-li', function (e) {
@@ -37,6 +69,9 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
       if ($subs.length) {
         $subs.children('li').first().trigger('click');
       } else {
+        if (isSmallScreen) {
+          $navs.fadeOut();
+        }
         changeSubsTitle($this, false);
       }
     });
