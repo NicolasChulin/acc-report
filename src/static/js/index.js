@@ -22,6 +22,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
     $navs.fadeToggle();
   });
 
+  // 注册resize事件
   function resizeEvent () {
     var docEl     = document.documentElement,
     resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
@@ -46,7 +47,6 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
     window.addEventListener(resizeEvt, recalc, false);
     document.addEventListener('DOMContentLoaded', recalc, false);
   }
-
 
   // 制作导航
   function createMenus () {
@@ -104,7 +104,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
       title.main = $target.attr('data-name');
     }
 
-    var tname = title.main + (title.sub ? '--' + title.sub : '')
+    var tname = title.main + (title.sub ? '-' + title.sub : '')
     $subsTitle.text(tname);
     updatePage(status)
   }
@@ -132,25 +132,25 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
       }
     }
   }
-
+  // 显示封面
   function setCover () {
     var hTmpl = $('#cover').html();
     var dom = tmpl(hTmpl, {cover: indexData.cover});
     $bdmCont.empty().append(dom);
   }
-
+  // 显示目录
   function setCatalog () {
     var hTmpl = $('#catalog').html();
     var dom = tmpl(hTmpl);
     $bdmCont.empty().append(dom);
   }
-
+  // 显示说明
   function setIntroduction () {
     var hTmpl = $('#introduction').html();
     var dom = tmpl(hTmpl);
     $bdmCont.empty().append(dom);
   }
-
+  // 显示总成绩
   function setOverview () {
     var hTmpl = $('#overview').html();
     var dom = tmpl(hTmpl, {overview: indexData.overview});
@@ -175,7 +175,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
       $(this).append(svg);
     })
   }
-
+  // 切换科目不同分值统计项
   function switchScore (subCategory) {
     switch (subCategory) {
       case '01':
@@ -200,7 +200,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
        break;
     }
   }
-
+  // 显示第1页
   function setItemOne () {
     var hTmpl = $('#item-one').html();
     var dom = tmpl(hTmpl, {items: indexData.itemOne});
@@ -231,7 +231,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
       data: indexData.itemOne.area.dfrChart
     }))
   }
-
+  // 显示第2, 3页
   function setItemTwo () {
     var hTmpl = $('#item-two').html();
     var dom = tmpl(hTmpl, {items: indexData.itemTwo});
@@ -252,7 +252,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
       data: indexData.itemTwo.all.dfrChart
     }))
   }
-
+  // 显示第4页
   function setItemFour () {
     var hTmpl = $('#item-four').html();
     var dom = tmpl(hTmpl, {items: indexData.itemFour});
@@ -293,7 +293,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
       data: indexData.itemFour.easy.area
     }))
   }
-
+  // 显示第5页
   function setItemFive () {
     var hTmpl = $('#item-five').html();
     var dom = tmpl(hTmpl, {items: indexData.itemFive});
@@ -702,7 +702,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
     return options
   }
 
-  /* svg */
+  /* svg-circle */
   function creatSvg (tag, attrs) {
     if(!document.createElementNS) return
     var svg = document.createElementNS('http://www.w3.org/2000/svg', tag)
