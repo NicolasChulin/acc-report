@@ -12,6 +12,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
   var $bdmCont = $('#bd-m-cont');
   var $subtBtn = $('#sub-t-btn');
   var $navs = $('#bd-navs');
+  var $bdMain = $('#bd-main');
 
   resizeEvent();
   createMenus();
@@ -26,13 +27,16 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
     resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
     var recalc = function() {
       var clientWidth = docEl.clientWidth;
-      isSmallScreen = clientWidth <= 992;
+      isSmallScreen = clientWidth <= 1160;
       if (isSmallScreen) {
         var rate = (clientWidth / 1160).toFixed(2);
+        var bdm_h = (rate * 1641 + 60) + 'px';
+        $bdMain.css({height: bdm_h});
         var scale = 'scale(' + rate + ',' + rate +')';
-        $bdmCont.css({'transform': scale});
+        $bdmCont.css({transform: scale});
       } else {
-        $bdmCont.css({'transform': ''});
+        $bdMain.removeAttr('style');
+        $bdmCont.removeAttr('style');
       }
     }
 
@@ -355,7 +359,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             name: '平均得分率',
             data: opt.data.ave,
             type: 'line',
-            hoverAnimation: false,
+            hoverAnimation: true,
             lineStyle: {
               color: '#b04245',
               type: 'dashed'
@@ -377,7 +381,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             name: '最高得分率',
             data: opt.data.max,
             type: 'line',
-            hoverAnimation: false,
+            hoverAnimation: true,
             lineStyle: {
               color: '#fe8259'
             },
@@ -398,7 +402,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             name: '考生得分率',
             data: opt.data.user,
             type: 'scatter',
-            hoverAnimation: false,
+            hoverAnimation: true,
             label: {
               show: true,
               color: '#6f79c4',
@@ -493,7 +497,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             name: '同水平',
             type: 'scatter',
             data: opt.data.equ,
-            hoverAnimation: false,
+            hoverAnimation: true,
             itemStyle: {
               color: '#6f79c4',
               borderColor: '#fff',
@@ -507,7 +511,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             name: 'A等考生',
             type: 'scatter',
             data: opt.data.max,
-            hoverAnimation: false,
+            hoverAnimation: true,
             itemStyle: {
               color: '#fe8259',
               borderColor: '#fff',
@@ -659,7 +663,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             name: '难度',
             data: opt.data.nums,
             type: 'scatter',
-            hoverAnimation: false,
+            hoverAnimation: true,
             label: {
               show: true,
               color: '#fff',
@@ -693,7 +697,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
       }
     }
     // 禁止载入动画
-    options['animation'] = false
+    // options['animation'] = false
     return options
   }
 

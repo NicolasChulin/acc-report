@@ -16,7 +16,7 @@ define(function () {
       page: 'introduction'
     },
     {
-      name: '总览',
+      name: '总成绩',
       page: 'overview'
     },
     {

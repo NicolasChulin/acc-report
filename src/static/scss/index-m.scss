@@ -1,22 +1,21 @@
-@media (max-width: 992px) {
+
+@media (max-width: 1160px) {
 
   .bd-header{
     padding: 0;
     height: 40px;
 
-    .bd-title,
-    .bd-navs{
-      display: none;
+    .bd-title{
+      width: 120px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 18px;
     }
     .bd-sub-title{
       padding: 5px;
     }
     .sub-t-btn{
       display: block;
-      width: 30px;
-      height: 30px;
-      top: 5px;
-      right: 10px;
     }
   }
   .bd-navs{
@@ -27,10 +26,22 @@
   .bd-main{
     padding: 40px 0 0;
     width: 100%;
-    overflow: auto;
+    overflow: hidden;
   }
   .bd-m-cont{
     margin: 0 auto;
     transform-origin: 0 0;
+  }
+}
+
+@media (max-width: 992px) {
+
+  .bd-header{
+
+    .bd-title{
+      padding-left: 15px;
+      font-size: 14px;
+      text-align: left;
+    }
   }
 }
