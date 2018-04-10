@@ -37,6 +37,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
       } else {
         $bdMain.removeAttr('style');
         $bdmCont.removeAttr('style');
+        $navs.removeAttr('style');
       }
     }
 
