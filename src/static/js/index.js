@@ -58,8 +58,10 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
     // 事件绑定
     $navs.on('click', '.navs-sub-li', function (e) {
       e.stopPropagation();
+      $(this).parents('.navs-li').siblings().find('li').removeClass('li-act');
       $(this).addClass('li-act').siblings().removeClass('li-act');
-      changeSubsTitle($(this), true);
+
+      changeSubsTitle($(this), 1);
       if (isSmallScreen) {
         $navs.fadeOut();
       }
@@ -71,13 +73,11 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
       var $subs = $this.children('.navs-sub');
       $this.addClass('li-act li-subs-open').siblings().removeClass('li-act li-subs-open');
 
-      if ($subs.length) {
-        $subs.children('li').first().trigger('click');
-      } else {
+      if ($subs.length === 0) {
+        changeSubsTitle($this, 0);
         if (isSmallScreen) {
           $navs.fadeOut();
         }
-        changeSubsTitle($this, false);
       }
     });
 
