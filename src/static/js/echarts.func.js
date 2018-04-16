@@ -385,3 +385,202 @@ function getOptions (opt) {
   options['animation'] = false
   return options
 }
+
+function getOpt (opt) {
+  let options = {}
+  if (opt.type === 'bar-step' || opt.type === 'bars-step') {
+    var legend = []
+    var series = []
+    opt.data.map(function (item) {
+      legend.push(item.name)
+      let sers = {
+        name: item.name,
+        type: 'bar',
+        stack: '百分比',
+        barWidth: 20,
+        data: item.nums
+      }
+      if (opt.type === 'bars-step') sers.label = {
+        show: true,
+        position: 'bottom',
+        color: '#a5a5b2',
+        fontSize: 12,
+        formatter: function (params) {
+          return (params.value * 100) + '%'
+        }
+      }
+      series.push(sers)
+    })
+
+    options = {
+      color: ['#4fb2d5', '#6f79c4', '#ff7b4f', '#c0504d'],
+      legend: {
+        data: legend,
+        bottom: 20,
+        itemWidth: 15,
+        itemGap: 20,
+        textStyle: {
+          color: '#8c8c9e',
+          fontSize: 14
+        }
+      },
+      grid: {
+        top: '20%',
+        left: '5%',
+        right: '10%',
+        bottom: '45%',
+        containLabel: true
+      },
+      xAxis:  {
+        type: 'value',
+        min: 0,
+        max: 1,
+        splitNumber: 5,
+        axisLine: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: true
+        },
+        axisLabel: {
+          color: '#a5a5b2',
+          fontSize: 14,
+          formatter: function (value) {
+            return (value * 100) + '%'
+          }
+        }
+      },
+      yAxis: {
+        type: 'category'
+      },
+      series: series
+    }
+
+    if (opt.type === 'bars-step') {
+      options.xAxis.splitLine.show = false
+      options.xAxis.axisLabel.show = false
+      options.yAxis = {
+        type: 'category',
+        data: ['语文素养与应用', '语文素养与应用', '语文素养与应用'],
+        axisLine: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        axisLabel: {
+          fontSize: 17,
+          fontWeight: 600,
+          color: '#46464c',
+          margin: -450,
+          padding: [0, 0, 70, 0]
+        }
+      }
+      options.grid = {
+        top: '5%',
+        left: '42%',
+        right: '10%',
+        bottom: '10%',
+        containLabel: true
+      }
+    }
+  } else if (opt.type === 'bars') {
+    var yaxis = []
+    var sdata = []
+    opt.data.nums.map(function (item) {
+      yaxis.push(item.name)
+      sdata.push(item.nums)
+    })
+    options = {
+      title: {
+        text: opt.data.title,
+        left: 'center',
+        top: 30,
+        textStyle: {
+            fontSize: 18,
+            color: '#46464c'
+        }
+      },
+      grid: {
+        top: '30%',
+        left: '5%',
+        right: '8%',
+        bottom: '10%',
+        containLabel: true
+      },
+      xAxis:  {
+        type: 'value',
+        position: 'top',
+        min: 0,
+        max: 1,
+        splitNumber: 10,
+        axisLine: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        axisLabel: {
+          color: '#a5a5b2',
+          fontSize: 12,
+          formatter: function (value) {
+            return (value * 100) + '%'
+          }
+        }
+      },
+      yAxis: {
+        type: 'category',
+        data: yaxis,
+        axisLine: {
+          lineStyle: {
+            color: '#8d8d9e'
+          }
+        },
+        axisLabel: {
+          color: '#6b6b7e',
+          fontSize: 16,
+          padding: [0, 20, 0, 0]
+        },
+        axisTick: {
+          show: false
+        }
+      },
+      series: [
+        {
+          type: 'bar',
+          stack: '总量',
+          label: {
+            show: true,
+            position: 'right',
+            color: '#8d8d9e',
+            fontSize: 14,
+            formatter: function (params) {
+              return (params.value * 100) + '%'
+            }
+          },
+          barWidth: 20,
+          itemStyle: {
+            color: function (params) {
+              var colors = ['#6f79c4', '#ff7b4f', '#c0504d'];
+              var len = colors.length;
+              return colors[len - params.dataIndex - 1]
+            }
+          },
+          data: sdata
+        }
+      ]
+    }
+  }
+  // 禁止载入动画
+  options['animation'] = false
+  return options
+}
