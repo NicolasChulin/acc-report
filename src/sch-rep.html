@@ -1,13 +1,35 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="acc-报告" />
+  <meta name="description" content="acc-报告展示" />
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=1">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>school-report</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/common.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/school-rep.css">
 </head>
 <body>
+  <!-- 标题 -->
+  <div class="bd-header">
+    <h1 class="bd-title">ACC 学校报告</h1>
+    <a class="bd-href" href="/">学生报告</a>
+    <h3 class="bd-sub-title" id="bd-sub-title"></h3>
+    <div class="sub-t-btn" id="sub-t-btn">目录</div>
+  </div>
+  <!-- 导航 -->
+  <div class="bd-navs" id="bd-navs">
+  </div>
+  <!-- 主题内容 -->
+  <div class="bd-main" id="bd-main">
+    <div class="bd-m-cont" id="bd-m-cont">
+    </div>
+  </div>
 
-<ul>
+<!-- <ul>
   <li><a href="/school/introduction.html">前言</a></li>
   <li><a href="/school/page-one.html">01</a></li>
   <li><a href="/school/page-onet.html">01-2</a></li>
@@ -18,7 +40,401 @@
   <li><a href="/school/page-three-t.html">03-2</a></li>
   <li><a href="/school/page-three-cate.html">03-3</a></li>
   <li><a href="/school/page-three-cate-t.html">03-4</a></li>
-</ul>
+</ul> -->
+
+<!-- templates  -->
+<!-- menus -->
+<script id="menus" type="text/html">
+  <ul class="navs">
+    <% for (var i =0; i < menus.length; i++) { %>
+      <li class="navs-li" data-page="<%:=menus[i].page%>" data-name="<%:=menus[i].name%>">
+        <span class="nav-name"><%:=menus[i].name%></span>
+
+        <% if (menus[i].subs) { %>
+          <% var subs = menus[i].subs %>
+          <ul class="navs-sub">
+          <% for (var j = 0; j < subs.length; j++) { %>
+            <li class="navs-sub-li" data-page="<%:=subs[j].page%>" data-name="<%:=subs[j].name%>"><%:=subs[j].name%></li>
+          <% } %>
+          </ul>
+        <% } %>
+      </li>
+    <% } %>
+  </ul>
+</script>
+<!-- introduction -->
+<script id="introduction" type="text/html">
+  <div class="page-box">
+    <div class="intr-title page-top-tag">
+      <h1>前言</h1>
+    </div>
+    <div class="intr-detail">
+      <p>	核心能力测评（ACC，Assessment of Core Competencies）由北京大学教育学院发起，旨在满足高校人才培养与评价需求，指导高品质高中建设，探索符合中国国情的拔尖人才培养模式的大型教育实验研究项目。ACC项目组于2017年12月17日举行由全国21个省份高水平学生参加的学科测试，重点考察考生在问题情境下应用知识的水平及高阶思维能力。ACC项目组采用创新的命题思路，遵守严谨科学的命题流程，依托智能化考试平台施测，使用先进的教育测量学理论、方法与技术对考生进行评价分析，为学生学习与学校教学及教管部门管理提供反馈。</p>
+
+      <div class="intr-table">
+        <table class="table-sch" cellspacing="0">
+          <thead>
+            <tr class="th-gray">
+              <th>科目</th>
+              <th>内容</th>
+              <th>时间</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="3">基础能力</td>
+              <td>语文素养与应用</td>
+              <td rowspan="3">3小时（必考）</td>
+            </tr>
+            <tr>
+              <td>数学科学与探究</td>
+            </tr>
+            <tr>
+              <td>英语能力与思辨</td>
+            </tr>
+            <tr>
+              <td rowspan="2">人文素养</td>
+              <td>历史</td>
+              <td rowspan="2">2小时（选考）</td>
+            </tr>
+            <tr>
+              <td>政治</td>
+            </tr>
+            <tr>
+              <td rowspan="2">科学素养</td>
+              <td>物理</td>
+              <td rowspan="2">2小时（选考）</td>
+            </tr>
+            <tr>
+              <td>化学</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>阅读本报告请注意以下事项：</h3>
+      <p>1）测评分析基于考生作答数据，<span>题目难度、作答干扰、阅读速度、答题态度、心理与生理状态均会影响考生作答结果。因此，报告中的分析、建议等仅作参考，请客观、谨慎对待测评结果。</span></p>
+      <p>2）各学科满分100分，总分500分。</p>
+      <p>3）TOP10：在此次考试中得分在全体考生前10%的学生人数。</p>
+      <p>4）百分等级：学生相对位置的描述，如百分等级为88，说明学生成绩超过88%的全体学生。</p>
+
+      <h3>学校报告内容包括：</h3>
+      <p>1）学校测评结果整体情况（总成绩、各学科成绩以及相应的位置水平等）；</p>
+      <p>2）学生各学科测评结果的详细剖析：</p>
+      <ol>
+        <li>学生各学科重点知识掌握情况；</li>
+        <li>学科核心能力或素养的表现；</li>
+      </ol>
+
+      <h3>报告使用声明：</h3>
+      <p>1）本报告内容属于学校信息，请注意保密。</p>
+      <p>2）本报告包含的内容（包括但不限于文本、数据、logo、图片等）的所有权受版权、商标及其他知识产权法的保护，归ACC项目组所有。未经ACC项目组书面许可，不得修改、复制、翻译、分发、公开、出售任何从报告中获取的信息、设计。</p>
+    </div>
+
+    <div class="page-bot-num">01</div>
+  </div>
+</script>
+
+<script id="overview" type="text/html">
+  <div class="page-box school-box">
+    <div class="page-head">
+      <span>高中生发展与核心能力评测（ACC）</span>
+      <span>核心能力评测（ACC）个人评价报告</span>
+    </div>
+
+    <% var infos = items.infos %>
+    <div class="sch-sum">
+      <div class="sch-tag tag-deco-down">
+        <h1>本校总成绩概况</h1>
+      </div>
+      <div class="sum-detail sch-tb-list">
+        <ul>
+          <li>
+            <div class="list-cont">
+              <span>学校: <%:=infos.school%></span>
+              <span>报考人数: <%:=infos.applyNum%></span>
+            </div>
+          </li>
+          <li>
+            <div class="list-cont">
+              <span>考试时间: <%:=infos.examTime%></span>
+              <span>实考人数: <%:=infos.examNum%></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <% var user = items.user %>
+    <div class="sch-sum-items">
+      <div class="items-title sch-bk-title">
+        <h3><%:=infos.title%></h3>
+      </div>
+      <div class="items-detail sch-tb-list">
+        <ul>
+          <li>
+            <div class="list-cont">
+              <span>有效学生数:  <%:=user.valiableNum%></span>
+              <span>本校平均分:  <%:=user.aveSchool%></span>
+            </div>
+          </li>
+          <li>
+            <div class="list-cont">
+              <span>本校最高分:  <%:=user.maxSchool%> </span>
+              <span>本省平均分: <%:=user.aveArea%></span>
+            </div>
+          </li>
+          <li>
+            <div class="list-cont">
+              <span>本校最低分:  <%:=user.minScholl%></span>
+              <span>全体平均分: <%:=user.aveAll%></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="sch-tag tag-deco-up">
+        <p>注意：如学生有一个学科缺考并不计算总成绩。</p>
+      </div>
+      <div class="items-rates">
+        <% var rates = items.rates %>
+        <div class="rates-li">
+          <div class="rate-title">
+            <p>本校平均分超过全体<i><%:=rates.all.rate%></i>的学校</p>
+            <span>（全体共 <%:=rates.all.schoolNum%> 所学校）</span>
+          </div>
+          <div class="rate-ruler">
+            <span class="ruler-mark" style="left: <%:=rates.all.rate%>;"></span>
+            <span class="ruler-dec">超过全体<%:=rates.all.rate%>的学校</span>
+            <span class="ruler-nums"><em>0</em><em>25</em><em>50</em><em>75</em><em>100</em></span>
+          </div>
+        </div>
+        <div class="rates-li">
+          <div class="rate-title">
+            <p>本校平均分超过本省 <%:=rates.area.rate%> 的学校</p>
+            <span>（全体共 <%:=rates.area.schoolNum%> 所学校）</span>
+          </div>
+          <div class="rate-ruler">
+            <span class="ruler-mark" style="left: <%:=rates.area.rate%>;"></span>
+            <span class="ruler-dec">超过全体<%:=rates.area.rate%>的学校</span>
+            <span class="ruler-nums"><em>0</em><em>25</em><em>50</em><em>75</em><em>100</em></span>
+          </div>
+        </div>
+      </div>
+      <div class="sch-tag tag-deco-down">
+        <h1>学生得分情况</h1>
+      </div>
+      <div class="items-table">
+        <table class="table-sch" cellspacing="0">
+          <thead>
+            <tr class="th-gray">
+              <th></th>
+              <th colspan="2">本校</th>
+              <th colspan="2">本省</th>
+              <th colspan="2">全体</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="th-sub">
+              <td></td>
+              <td>人数</td>
+              <td>比例</td>
+              <td>人数</td>
+              <td>比例</td>
+              <td>人数</td>
+              <td>比例</td>
+            </tr>
+            <% var score = items.score %>
+            <% for (var i = 0; i < score.length; i++) {%>
+            <% var item = score[i] %>
+            <tr>
+              <td><%:=item.name%></td>
+              <td><%:=item.sch_num%></td>
+              <td><%:=item.sch_rate%></td>
+              <td><%:=item.area_num%></td>
+              <td><%:=item.area_rate%></td>
+              <td><%:=item.all_num%></td>
+              <td><%:=item.all_rate%></td>
+            </tr>
+            <%}%>
+          </tbody>
+        </table>
+      </div>
+      <div class="items-chart" id="all-rates">
+      </div>
+      <div class="items-tips sch-tag tag-deco-up">
+        <h3 class="tag-title">备注</h3>
+        <ul>
+          <li><span>低分段：全体百分等级低于25的人数比例；</span></li>
+          <li><span>良   好：全体百分等级小于75，大于等于50的人数比例；</span></li>
+          <li><span>中   等：全体百分等级小于50，大于等于25的人数比例；</span></li>
+          <li><span>高分段：全体百分等级大于等于75的人数比例；</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-bot-num">02/<%:=index%></div>
+
+  </div>
+</script>
+
+<script id="goal" type="text/html">
+  <div class="page-box school-box">
+    <div class="page-head">
+      <span>高中生发展与核心能力评测（ACC）</span>
+      <span>核心能力评测（ACC）个人评价报告</span>
+    </div>
+
+    <div class="sch-score">
+      <div class="items-title sch-bk-title">
+        <h3><%:=items.title%>得分情况</h3>
+      </div>
+
+      <% for (var i = 0; i < items.tables.length; i++) {%>
+      <% var item = items.tables[i] %>
+      <div class="sch-tag tag-deco-up">
+        <h1><%:=item.name%></h1>
+      </div>
+      <div class="items-table">
+        <table class="table-sch" cellspacing="0">
+          <thead>
+            <tr class="th-gray">
+              <th></th>
+              <th>平均分</th>
+              <th>最高分</th>
+              <th>最低分</th>
+              <th>实考人数</th>
+              <th>TOP10人数（比例）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (var j = 0; j < item.series.length; j++) {%>
+            <% var elem = item.series[j] %>
+            <tr>
+              <td><%:=elem.name%></td>
+              <td><%:=elem.ave%></td>
+              <td><%:=elem.max%></td>
+              <td><%:=elem.min%></td>
+              <td><%:=elem.examNum%></td>
+              <td><%:=elem.topNum%>(<%:=elem.topRate%>)</td>
+            </tr>
+            <%}%>
+          </tbody>
+        </table>
+      </div>
+      <%}%>
+
+      <div class="items-rates-chart">
+        <div class="rchart-li" id="all-rate"></div>
+        <div class="rchart-li" id="area-rate"></div>
+      </div>
+      <div class="sch-tag tag-deco-up">
+        <p>参加ACC测试的学校全体共 <%:=items.allScholl%> 所，本省共 <%:=items.areaScholl%> 所</p>
+      </div>
+      <div class="items-rates-categorys" id="rates-categorys">
+      </div>
+      <div class="rates-c-tips"><span><%:=items.title%>各段人数比例</span></div>
+    </div>
+
+    <div class="page-bot-num">03/<%:=index%></div>
+
+  </div>
+</script>
+
+<script id="category" type="text/html">
+  <div class="page-box school-box">
+    <div class="page-head">
+      <span>高中生发展与核心能力评测（ACC）</span>
+      <span>核心能力评测（ACC）个人评价报告</span>
+    </div>
+
+    <div class="sch-score">
+      <div class="items-title sch-bk-title">
+        <h1><%:=items.title%></h1>
+      </div>
+      <div class="sch-tag tag-deco-up">
+        <p><%:=items.description%></p>
+      </div>
+
+      <div class="score-tables">
+        <h2 class="tag-title">本校知识模块得分率与<%:=items.type%>考生的比较</h2>
+        <div class="items-tables">
+          <table class="table-sch" cellspacing="0">
+            <thead>
+              <tr class="th-gray">
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>本校</th>
+                <th colspan="3"><%:=items.type%>考生</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="th-sub">
+                <td>编号</td>
+                <td>知识模块</td>
+                <td>题数</td>
+                <td>平均得分率</td>
+                <td>平均得分率</td>
+                <td>高分段得分率</td>
+                <td>TOP10平均得分率</td>
+              </tr>
+              <% for (var i = 0; i < items.tables.list.length; i++) {%>
+              <% var item = items.tables.list[i] %>
+              <tr>
+                <td><%:=item.no%></td>
+                <td><%:=item.name%></td>
+                <td><%:=item.t_num%></td>
+                <td><%:=item.ave_user%></td>
+                <td><%:=item.ave_all%></td>
+                <td><%:=item.max%></td>
+                <td><%:=item.top%></td>
+              </tr>
+              <%}%>
+            </tbody>
+          </table>
+          <table class="table-sch" cellspacing="0">
+            <thead>
+              <tr class="th-gray">
+                <th></th>
+                <th>得分率较高</th>
+                <th>得分率较低</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (var i = 0; i < items.tables.compare.length; i++) {%>
+              <% var item = items.tables.compare[i] %>
+              <tr>
+                <td><%:=item.name%></td>
+                <td><%:=item.high%></td>
+                <td><%:=item.low%></td>
+              </tr>
+              <%}%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="items-charts">
+        <div class="items-echart-line tag-deco-up" id="all-line-yy"></div>
+        <% if (index > 2) {%>
+        <div class="items-echart-bar items-echart-bar-h" id="all-bar-yy"></div>
+        <% } else { %>
+        <div class="items-echart-bar" id="all-bar-yy"></div>
+        <%}%>
+      </div>
+
+    </div>
+
+    <div class="page-bot-num">04/<%:=index%></div>
+
+  </div>
+</script>
+
+<!-- <script id="" type="text/html">
+
+</script> -->
+
+<!-- js -->
+<script src="/static/libs/require.min.js" data-main="/static/js/school" defer async="true"></script>
 
 </body>
 </html>

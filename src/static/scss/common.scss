@@ -343,3 +343,139 @@ img.cover{
     }
   }
 }
+
+
+
+/* index ====>*/
+/* navs */
+.bd-navs{
+  position: fixed;
+  height: 100%;
+  width: 200px;
+  top: 0;
+  left: 0;
+  z-index: 98;
+  overflow: auto;
+  background: #fff;
+  padding-top: 60px;
+  box-shadow: 0 0 1px #999;
+
+  ul.navs{
+    padding: 30px 10px;
+    font-size: 14px;
+  }
+  li.navs-li{
+    padding: 0 20px;
+    margin-bottom: 5px;
+    min-height: 40px;
+    color: #333;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover,
+    &.li-act{
+      background-color: $grayRed;
+
+      span{
+        color: $red;
+        font-weight: 600;
+      }
+    }
+
+    &.li-subs-open{
+      ul.navs-sub{
+        display: block;
+      }
+    }
+  }
+
+  .nav-name{
+    display: block;
+    height: 40px;
+    line-height: 40px;
+  }
+  ul.navs-sub{
+    display: none;
+    padding-bottom: 10px;
+  }
+  li.navs-sub-li{
+    padding: 5px 0 5px 20px;
+    word-wrap: break-word;
+    min-height: 30px;
+    line-height: 20px;
+    color: #666;
+
+    &:hover{
+      color: #999;
+    }
+    &.li-act{
+      color: $red;
+      font-weight: 600;
+    }
+  }
+
+}
+
+.bd-header{
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  top: 0;
+  left: 0;
+  padding-left: 220px;
+  z-index: 99;
+  box-shadow: 0 0 1px #999;
+  background: #fff;
+
+  .bd-title{
+    position: absolute;
+    width: 200px;
+    height: 60px;
+    left: 0;
+    top: 0;
+    line-height: 60px;
+    font-size: 24px;
+    text-align: center;
+    color: $red;
+  }
+  .bd-sub-title{
+    padding: 15px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+  }
+  .sub-t-btn{
+    position: absolute;
+    padding: 0 8px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 5px;
+    background: $red;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    display: none;
+  }
+  .bd-href{
+    display:black;
+    float:left;
+    padding: 15px;
+    line-height:30px;
+    color: $gray;
+    &:hover{
+      color: $red;
+    }
+  }
+}
+
+.bd-main{
+  padding: 60px 0 20px 200px;
+}
+.bd-m-cont{
+  margin: 30px auto;
+  width: 1160px;
+  height: 1641px;
+}

@@ -47,7 +47,7 @@ define(function () {
     },
     {
       name: '英语',
-      page: 'chinese',
+      page: 'english',
       subs: [
         {
           name: '01',
