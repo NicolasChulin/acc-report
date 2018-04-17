@@ -10,16 +10,12 @@ window.onload = function () {
       title: '超过全体的学校百分比',
       nums: [
         {
-          name: '语文素养与应用',
+          name: '物理',
           nums: 0.4
         },
         {
-          name: '数学科学与探究',
+          name: '化学',
           nums: 0.5
-        },
-        {
-          name: '英语能力与思辨',
-          nums: 0.4
         }
       ]
     }
@@ -31,16 +27,12 @@ window.onload = function () {
       title: '超过本省的学校百分比',
       nums: [
         {
-          name: '语文素养与应用',
+          name: '物理',
           nums: 0.5
         },
         {
-          name: '数学科学与探究',
+          name: '化学',
           nums: 0.2
-        },
-        {
-          name: '英语能力与思辨',
-          nums: 0.6
         }
       ]
     }
@@ -49,23 +41,23 @@ window.onload = function () {
   getEchart(ratesCategorysDom).setOption(getOpt({
     type: 'bars-step',
     data: {
-      yaxis: ['语文素养与应用', '数学科学与探究', '英语能力与思辨'],
+      yaxis: ['物理', '化学'],
       series: [
         {
           name: '低分段',
-          nums: [0.1, 0.1, 0.1]
+          nums: [0.1, 0.1]
         },
         {
           name: '中等',
-          nums: [0.4, 0.4, 0.4]
+          nums: [0.3, 0.3]
         },
         {
           name: '良好',
-          nums: [0.4, 0.4, 0.4]
+          nums: [0.5, 0.5]
         },
         {
           name: '高分段',
-          nums: [0.1, 0.1, 0.1]
+          nums: [0.1, 0.1]
         }
       ]
     }

@@ -391,7 +391,7 @@ function getOpt (opt) {
   if (opt.type === 'bar-step' || opt.type === 'bars-step') {
     var legend = []
     var series = []
-    opt.data.map(function (item) {
+    opt.data.series.map(function (item) {
       legend.push(item.name)
       let sers = {
         name: item.name,
@@ -460,11 +460,13 @@ function getOpt (opt) {
     }
 
     if (opt.type === 'bars-step') {
+      var isTiny = opt.data.yaxis[0].length <=3
       options.xAxis.splitLine.show = false
       options.xAxis.axisLabel.show = false
       options.yAxis = {
         type: 'category',
-        data: ['语文素养与应用', '语文素养与应用', '语文素养与应用'],
+        data: opt.data.yaxis,
+        offset: isTiny ? -430 : -450,
         axisLine: {
           show: false
         },
@@ -478,13 +480,12 @@ function getOpt (opt) {
           fontSize: 17,
           fontWeight: 600,
           color: '#46464c',
-          margin: -450,
           padding: [0, 0, 70, 0]
         }
       }
       options.grid = {
         top: '5%',
-        left: '42%',
+        left: isTiny ? '5%' : '0',
         right: '10%',
         bottom: '10%',
         containLabel: true
@@ -579,8 +580,223 @@ function getOpt (opt) {
         }
       ]
     }
+  } else if (opt.type === 'line-mix') {
+
+    options = {
+      legend: {
+        show: true,
+        data: ['本校平均得分率', '全体平均得分率', 'TOP10平均得分率'],
+        bottom: 20,
+        itemGap: 20,
+        textStyle: {
+          color: '#8c8c9e',
+          fontSize: 14
+        }
+      },
+      grid: {
+        bottom: '30%',
+        left: '5%',
+        right: '5%'
+      },
+      xAxis: {
+        type: 'category',
+        data: opt.data.xaxis,
+        axisLine: {
+          show: true,
+          lineStyle: {
+            color: '#6b6b7e',
+            width: 2
+          }
+        },
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          color: '#6b6b7e',
+          fontSize: 15,
+          fontWeight: 600
+        },
+        splitLine: {
+          show: true
+        }
+      },
+      yAxis: {
+        type: 'value',
+        axisLabel: {
+          show: false
+        },
+        axisLine: {
+          lineStyle: {
+            color: '#d1d6e0'
+          }
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false,
+          lineStyle: {
+              color: '#d1d6e0'
+          }
+        }
+      },
+      series: [
+        {
+          name: '全体平均得分率',
+          data: opt.data.ave,
+          type: 'line',
+          hoverAnimation: false,
+          lineStyle: {
+            color: '#b04245'
+          },
+          label: {
+            show: true,
+            color: '#b04245',
+            position: 'top',
+            formatter: function (param) {
+              return (param.value * 100).toFixed(2) + '%'
+            }
+          },
+          itemStyle: {
+            color: '#b04245',
+            borderColor: '#b04245'
+          }
+        },
+        {
+          name: 'TOP10平均得分率',
+          data: opt.data.max,
+          type: 'line',
+          hoverAnimation: false,
+          lineStyle: {
+            color: '#fe8259'
+          },
+          label: {
+            show: true,
+            color: '#fe8259',
+            position: 'top',
+            formatter: function (param) {
+              return (param.value * 100).toFixed(2) + '%'
+            }
+          },
+          itemStyle: {
+            color: '#fe8259',
+            borderColor: '#fe8259'
+          }
+        },
+        {
+          name: '本校平均得分率',
+          data: opt.data.user,
+          type: 'scatter',
+          hoverAnimation: false,
+          label: {
+            show: true,
+            color: '#6f79c4',
+            position: 'top',
+            formatter: function (param) {
+              return (param.value * 100).toFixed(2) + '%'
+            }
+          },
+          itemStyle: {
+            color: '#6f79c4',
+            borderColor: '#fff',
+            borderWidth: 2,
+            shadowBlur: 5,
+            shadowColor: 'rgba(0, 0, 0, 0.5)',
+            shadowOffsetY: 2
+          }
+        }
+      ]
+    }
+  } else if(opt.type === 'bar-mix') {
+    options = {
+      legend: {
+        show: true,
+        data: ['本校平均得分率', '高分段平均得分率'],
+        itemGap: 20,
+        bottom: 20,
+        textStyle: {
+          color: '#8c8c9e',
+          fontSize: 14
+        }
+      },
+      grid: {
+        bottom: '20%',
+        left: '15%',
+        right: '10%'
+      },
+      xAxis: {
+        type: 'value',
+        position: 'top',
+        min: 0,
+        max: 1,
+        splitNumber: 5,
+        axisLine: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: '#d1d6e0'
+          }
+        },
+        axisLabel: {
+          color: '#8c8c9e',
+          fontSize: 14,
+          formatter: function (value) {
+            return (value * 100).toFixed(2) + '%'
+          }
+        }
+      },
+      yAxis: {
+        type: 'category',
+        data: opt.data.yaxis,
+        axisLine: {
+          lineStyle: {
+            color: '#6b6b7e',
+            width: 2
+          }
+        },
+        axisLabel: {
+          color: '#6b6b7e',
+          fontWeight: 600,
+          fontSize: 15,
+          padding: [0, 10, 0, 0]
+        },
+        axisTick: {
+          show: false
+        }
+      },
+      series: [
+        {
+          name: '本校平均得分率',
+          type: 'bar',
+          data: opt.data.user,
+          barWidth: 20,
+          itemStyle: {
+            color: '#b04245'
+          }
+        },
+        {
+          name: '高分段平均得分率',
+          type: 'scatter',
+          data: opt.data.max,
+          hoverAnimation: false,
+          itemStyle: {
+            color: '#6f79c4',
+            borderColor: '#fff',
+            borderWidth: 2,
+            shadowBlur: 5,
+            shadowColor: 'rgba(0, 0, 0, 0.5)',
+            shadowOffsetY: 2
+          }
+        }
+      ]
+    }
   }
   // 禁止载入动画
-  options['animation'] = false
+  // options['animation'] = false
   return options
 }
