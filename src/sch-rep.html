@@ -190,14 +190,16 @@
             <span>（全体共 <%:=rates.all.schoolNum%> 所学校）</span>
           </div>
           <div class="rate-ruler">
-            <span class="ruler-mark" style="left: <%:=rates.all.rate%>;"></span>
+            <span class="ruler-mk">
+              <span class="ruler-mark" style="left: <%:=rates.all.rate%>;"></span>
+            </span>
             <span class="ruler-dec">超过全体<%:=rates.all.rate%>的学校</span>
             <span class="ruler-nums"><em>0</em><em>25</em><em>50</em><em>75</em><em>100</em></span>
           </div>
         </div>
         <div class="rates-li">
           <div class="rate-title">
-            <p>本校平均分超过本省 <%:=rates.area.rate%> 的学校</p>
+            <p>本校平均分超过本省<i><%:=rates.all.rate%></i>的学校</p>
             <span>（全体共 <%:=rates.area.schoolNum%> 所学校）</span>
           </div>
           <div class="rate-ruler">
