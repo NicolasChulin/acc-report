@@ -29,7 +29,27 @@ function getOptions (opt) {
           }
         },
         axisLabel: {
-          color: '#6b6b7e'
+          interval: 0,
+          formatter: function (value, index) {
+            var len = value.length;
+            if (len > 5) {
+              var vals = [value.slice(0, 5), value.slice(5, -1)];
+            } else {
+              var vals = [value]
+            }
+            return vals.map(function (item) {
+              return '{xlabel|' + item + '}\n'
+            })
+          },
+          rich: {
+            xlabel: {
+              fontSize: 13,
+              color: '#6b6b7e',
+              width: 80,
+              height: 30,
+              lineHeight: 15
+            }
+          }
         },
         axisTick: {
           alignWithLabel: true
@@ -52,7 +72,7 @@ function getOptions (opt) {
           label: {
             show: true,
             color: '#b04245',
-            position: 'top',
+            position: 'bottom',
             formatter: function (param) {
               return (param.value * 100).toFixed(2) + '%'
             }
@@ -91,7 +111,7 @@ function getOptions (opt) {
           label: {
             show: true,
             color: '#6f79c4',
-            position: 'top',
+            position: ['-50px', '0'],
             formatter: function (param) {
               return (param.value * 100).toFixed(2) + '%'
             }
@@ -110,11 +130,13 @@ function getOptions (opt) {
 
     if (opt.type === 'line-mixs-l') {
       options.grid = {
-        bottom: '30%'
+        bottom: '30%',
+        left: '5%',
+        right: '5%'
       }
-      options.xAxis.axisLabel['fontSize'] = 15
     }
   } else if (opt.type === 'bar-mixs' || opt.type === 'bar-mixs-l') {
+    var barWidth = Math.floor(20 * 6 / opt.data.yaxis.length)
     options = {
       legend: {
         show: true,
@@ -127,7 +149,7 @@ function getOptions (opt) {
       },
       grid: {
         bottom: '30%',
-        left: '35%'
+        left: '30%'
       },
       xAxis: {
         type: 'value',
@@ -147,6 +169,7 @@ function getOptions (opt) {
         axisLabel: {
           color: '#8c8c9e',
           fontSize: 14,
+          margin: 20,
           formatter: function (value) {
             return (value * 100) + '%'
           }
@@ -173,7 +196,7 @@ function getOptions (opt) {
           name: '考生得分率',
           type: 'bar',
           data: opt.data.user,
-          barWidth: 20,
+          barWidth: barWidth,
           itemStyle: {
             color: '#b04245'
           }
@@ -212,7 +235,7 @@ function getOptions (opt) {
     if (opt.type === 'bar-mixs-l') {
       options.grid = {
         bottom: '15%',
-        left: '15%'
+        left: '20%'
       }
       options.xAxis.splitNumber = 10
       options.yAxis.axisLabel['fontSize'] = 15
