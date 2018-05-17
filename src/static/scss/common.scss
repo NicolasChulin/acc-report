@@ -322,6 +322,16 @@ img.cover{
     }
   }
 
+  &.table-rows-1{
+    td{
+      height: 120px;
+    }
+  }
+  &.table-rows-2{
+    td{
+      height: 60px;
+    }
+  }
   &.table-rows-8{
     td{
       height: 36px;
@@ -334,6 +344,21 @@ img.cover{
   }
 
   &.table-justy{
+    td{
+      height: 40px;
+    }
+  }
+  &.table-justy-4{
+    td{
+      height: 53.33px;
+    }
+  }
+  &.table-justy-5{
+    td{
+      height: 66.66px;
+    }
+  }
+  &.table-justy-6{
     td{
       height: 80px;
     }
@@ -491,7 +516,7 @@ img.cover{
     display: none;
   }
   .bd-href{
-    display:black;
+    display:block;
     float:left;
     padding: 15px;
     line-height:30px;
