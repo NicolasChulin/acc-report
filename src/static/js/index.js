@@ -451,7 +451,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
     } else if (opt.type === 'bar-mixs' || opt.type === 'bar-mixs-l') {
       var barWidth = Math.floor(20 * 6 / opt.data.yaxis.length)
       barWidth = barWidth > 30 ? 30 : barWidth;
-      
+
       options = {
         legend: {
           show: true,
@@ -574,7 +574,9 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
           left: '35%'
         },
         xAxis: {
-          show: false
+          show: false,
+          min: 0,
+          max: 1
         },
         yAxis: {
           type: 'category',

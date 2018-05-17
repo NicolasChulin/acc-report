@@ -258,7 +258,9 @@ function getOptions (opt) {
         left: '35%'
       },
       xAxis: {
-        show: false
+        show: false,
+        min: 0,
+        max: 1
       },
       yAxis: {
         type: 'category',
