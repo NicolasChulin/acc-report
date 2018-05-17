@@ -20,7 +20,7 @@ window.onload = function () {
     data: {
       title: '与全体考生对比',
       dataType: 'hard', // hard: 难题，mid：中等，easy：容易
-      nums: [0.65, 0.86, 0.67, 0.40]
+      nums: [0.65, 0.86, 0.67, 0.17]
     }
   }))
   charts.hardArea.setOption(getOptions({

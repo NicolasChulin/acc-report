@@ -62,7 +62,7 @@ window.onload = function () {
     type: 'line',
     data: {
       title: '考生错答题目的难度-能力（素质）情况',
-      xaxis: ['16题', '11题', '6题', '15题', '20题', '14题', '18题', '1题', '9题', '7题'],
+      xaxis: ['16题', '11题', '6题', '15题', '20题', '7题', '7题', '7题', '7题', '7题', '7题', '14题', '18题', '1题', '9题', '7题'],
       labelBack: '#6f79c4',
       // pointDom: document.getElementById('echartPointBlue'),
       nums: [
@@ -101,6 +101,30 @@ window.onload = function () {
         {
           value: 0.30,
           labels: ['A1', 'A2', 'A3']
+        },
+        {
+          value: 0.28,
+          labels: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11']
+        },
+        {
+          value: 0.28,
+          labels: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11']
+        },
+        {
+          value: 0.28,
+          labels: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11']
+        },
+        {
+          value: 0.28,
+          labels: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11']
+        },
+        {
+          value: 0.28,
+          labels: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11']
+        },
+        {
+          value: 0.28,
+          labels: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11']
         },
         {
           value: 0.34,

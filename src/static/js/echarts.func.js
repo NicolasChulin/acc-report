@@ -32,21 +32,18 @@ function getOptions (opt) {
           interval: 0,
           formatter: function (value, index) {
             var len = value.length;
+            var vals = [value]
             if (len > 5) {
-              var vals = [value.slice(0, 5), value.slice(5, -1)];
-            } else {
-              var vals = [value]
+              var pos = Math.ceil(len / 2)
+              vals = [value.slice(0, pos), value.slice(pos, len)];
             }
-            return vals.map(function (item) {
-              return '{xlabel|' + item + '}\n'
-            })
+            return '{xlabel|' + vals.join('\n') + '}'
           },
           rich: {
             xlabel: {
               fontSize: 13,
               color: '#6b6b7e',
               width: 80,
-              height: 30,
               lineHeight: 15
             }
           }
@@ -286,10 +283,18 @@ function getOptions (opt) {
           barWidth: 20,
           label: {
             show: true,
-            color: '#fff',
-            position: 'insideRight',
+            color: '#6b6b7e',
+            position: 'right',
             formatter: function (params) {
-              return (params.value * 100).toFixed(2) + '%'
+              var val = params.value * 100
+              var prec = val.toFixed(2) + '%'
+              return val >= 18 ? '{tinyLabel|'+ prec +'}' : prec
+            },
+            rich: {
+              tinyLabel: {
+                padding: [0,0,0,-50],
+                color: '#fff'
+              }
             }
           },
           itemStyle: {
@@ -316,16 +321,19 @@ function getOptions (opt) {
           fontSize: 18,
           fontWeight: 'normal'
         },
-        top: 37,
+        top: 20,
         left: 31
       },
       grid: {
         top: '20%',
         left: '10%',
+        right: '5%',
+        bottom: '12%'
       },
       xAxis: {
         type: 'category',
         data: opt.data.xaxis,
+        interval: 0,
         axisLine: {
           lineStyle: {
             color: '#a6a5b4'
@@ -381,24 +389,48 @@ function getOptions (opt) {
               var len = labels.length
               var newLen = Math.ceil(len / 2)
               var newLables = []
-              if (len >= 8) {
+              var labelCont = labels.join('\n')
+
+              var format = ['{icon|×}']
+              if (len > 6) {
                 for (var i = 0; i < newLen - 1; i++) {
                   var newSplit = [labels[2 * i], labels[2 * i + 1]]
                   newLables.push(newSplit.join(' '))
                 }
-                return newLables.join('\n')
+                labelCont = newLables.join('\n')
+                format.unshift('{twoCol|'+ labelCont +'}\n')
               } else {
-                return labels.join('\n')
+                format.unshift('{oneCol|'+ labelCont +'}\n')
               }
+              return format
             },
-            backgroundColor: opt.data.labelBack,
-            padding: 3,
+            rich: {
+              twoCol: {
+                backgroundColor: opt.data.labelBack,
+                color: '#fff',
+                align: 'center',
+                padding: 3,
+                fontSize: 12,
+                width: 40
+              },
+              oneCol: {
+                backgroundColor: opt.data.labelBack,
+                color: '#fff',
+                align: 'center',
+                padding: [2, 5, 2, 5],
+                fontSize: 12,
+                width: 14
+              },
+              icon: {
+                fontSize: 18,
+                color: opt.data.labelBack,
+                align: 'center'
+              }
+            }
           },
           itemStyle: {
             color: '#fff',
-            borderType: 'dotted',
-            borderWidth: 5,
-            borderColor: opt.data.labelBack
+            borderColor: '#fff'
           }
         }
       ]
@@ -635,9 +667,25 @@ function getOpt (opt) {
           show: false
         },
         axisLabel: {
-          color: '#6b6b7e',
-          fontSize: 15,
-          fontWeight: 600
+          interval: 0,
+          formatter: function (value, index) {
+            var len = value.length;
+            var vals = [value]
+            if (len > 5) {
+              var pos = Math.ceil(len / 2)
+              vals = [value.slice(0, pos), value.slice(pos, len)];
+            }
+            return '{xlabel|' + vals.join('\n') + '}'
+          },
+          rich: {
+            xlabel: {
+              fontSize: 13,
+              color: '#6b6b7e',
+              width: 80,
+              fontWeight: 600,
+              lineHeight: 15
+            }
+          }
         },
         splitLine: {
           show: true
@@ -675,7 +723,7 @@ function getOpt (opt) {
           label: {
             show: true,
             color: '#b04245',
-            position: 'top',
+            position: 'bottom',
             formatter: function (param) {
               return (param.value * 100).toFixed(2) + '%'
             }
@@ -714,7 +762,7 @@ function getOpt (opt) {
           label: {
             show: true,
             color: '#6f79c4',
-            position: 'top',
+            position: ['-50px', '0'],
             formatter: function (param) {
               return (param.value * 100).toFixed(2) + '%'
             }
@@ -731,6 +779,8 @@ function getOpt (opt) {
       ]
     }
   } else if(opt.type === 'bar-mix') {
+    var barWidth = Math.floor(20 * 6 / opt.data.yaxis.length)
+
     options = {
       legend: {
         show: true,
@@ -743,8 +793,9 @@ function getOpt (opt) {
         }
       },
       grid: {
-        bottom: '20%',
-        left: '15%',
+        top: '15%',
+        bottom: '18%',
+        left: '20%',
         right: '10%'
       },
       xAxis: {
@@ -785,7 +836,7 @@ function getOpt (opt) {
         axisLabel: {
           color: '#6b6b7e',
           fontWeight: 600,
-          fontSize: 15,
+          fontSize: 14,
           padding: [0, 10, 0, 0]
         },
         axisTick: {
@@ -797,7 +848,7 @@ function getOpt (opt) {
           name: '本校平均得分率',
           type: 'bar',
           data: opt.data.user,
-          barWidth: 20,
+          barWidth: barWidth,
           itemStyle: {
             color: '#b04245'
           }

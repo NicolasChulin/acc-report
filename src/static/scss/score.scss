@@ -369,19 +369,18 @@
   }
 
   .chart-err{
-    height: 518px;
-    margin: 20px 0;
+    margin-bottom: 20px;
     border: 1px solid $tinyWhite;
 
     .chart-cont{
       height: 448px;
     }
     .chart-intro{
-      height: 60px;
+      min-height: 60px;
       padding: 0 50px;
-      text-align: center;
       font-size: 14px;
       line-height: 20px;
+      font-weight: 600;
       color: $gray;
     }
   }
