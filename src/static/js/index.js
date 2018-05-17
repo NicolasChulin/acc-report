@@ -345,7 +345,24 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             }
           },
           axisLabel: {
-            color: '#6b6b7e'
+            interval: 0,
+            formatter: function (value, index) {
+              var len = value.length;
+              var vals = [value]
+              if (len > 5) {
+                var pos = Math.ceil(len / 2)
+                vals = [value.slice(0, pos), value.slice(pos, len)];
+              }
+              return '{xlabel|' + vals.join('\n') + '}'
+            },
+            rich: {
+              xlabel: {
+                fontSize: 13,
+                color: '#6b6b7e',
+                width: 80,
+                lineHeight: 15
+              }
+            }
           },
           axisTick: {
             alignWithLabel: true
@@ -360,7 +377,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             name: '平均得分率',
             data: opt.data.ave,
             type: 'line',
-            hoverAnimation: true,
+            hoverAnimation: false,
             lineStyle: {
               color: '#b04245',
               type: 'dashed'
@@ -368,7 +385,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             label: {
               show: true,
               color: '#b04245',
-              position: 'top',
+              position: 'bottom',
               formatter: function (param) {
                 return (param.value * 100).toFixed(2) + '%'
               }
@@ -382,7 +399,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             name: '最高得分率',
             data: opt.data.max,
             type: 'line',
-            hoverAnimation: true,
+            hoverAnimation: false,
             lineStyle: {
               color: '#fe8259'
             },
@@ -403,11 +420,11 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             name: '考生得分率',
             data: opt.data.user,
             type: 'scatter',
-            hoverAnimation: true,
+            hoverAnimation: false,
             label: {
               show: true,
               color: '#6f79c4',
-              position: 'top',
+              position: ['-50px', '0'],
               formatter: function (param) {
                 return (param.value * 100).toFixed(2) + '%'
               }
@@ -426,11 +443,15 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
 
       if (opt.type === 'line-mixs-l') {
         options.grid = {
-          bottom: '30%'
+          bottom: '30%',
+          left: '5%',
+          right: '5%'
         }
-        options.xAxis.axisLabel['fontSize'] = 15
       }
     } else if (opt.type === 'bar-mixs' || opt.type === 'bar-mixs-l') {
+      var barWidth = Math.floor(20 * 6 / opt.data.yaxis.length)
+      barWidth = barWidth > 30 ? 30 : barWidth;
+      
       options = {
         legend: {
           show: true,
@@ -443,7 +464,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
         },
         grid: {
           bottom: '30%',
-          left: '35%'
+          left: '30%'
         },
         xAxis: {
           type: 'value',
@@ -463,6 +484,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
           axisLabel: {
             color: '#8c8c9e',
             fontSize: 14,
+            margin: 20,
             formatter: function (value) {
               return (value * 100) + '%'
             }
@@ -489,7 +511,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             name: '考生得分率',
             type: 'bar',
             data: opt.data.user,
-            barWidth: 20,
+            barWidth: barWidth,
             itemStyle: {
               color: '#b04245'
             }
@@ -498,7 +520,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             name: '同水平',
             type: 'scatter',
             data: opt.data.equ,
-            hoverAnimation: true,
+            hoverAnimation: false,
             itemStyle: {
               color: '#6f79c4',
               borderColor: '#fff',
@@ -512,7 +534,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             name: 'A等考生',
             type: 'scatter',
             data: opt.data.max,
-            hoverAnimation: true,
+            hoverAnimation: false,
             itemStyle: {
               color: '#fe8259',
               borderColor: '#fff',
@@ -528,7 +550,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
       if (opt.type === 'bar-mixs-l') {
         options.grid = {
           bottom: '15%',
-          left: '15%'
+          left: '20%'
         }
         options.xAxis.splitNumber = 10
         options.yAxis.axisLabel['fontSize'] = 15
@@ -579,10 +601,18 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             barWidth: 20,
             label: {
               show: true,
-              color: '#fff',
-              position: 'insideRight',
+              color: '#6b6b7e',
+              position: 'right',
               formatter: function (params) {
-                return (params.value * 100).toFixed(2) + '%'
+                var val = params.value * 100
+                var prec = val.toFixed(2) + '%'
+                return val >= 18 ? '{tinyLabel|'+ prec +'}' : prec
+              },
+              rich: {
+                tinyLabel: {
+                  padding: [0,0,0,-50],
+                  color: '#fff'
+                }
               }
             },
             itemStyle: {
@@ -609,16 +639,19 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             fontSize: 18,
             fontWeight: 'normal'
           },
-          top: 37,
+          top: 20,
           left: 31
         },
         grid: {
           top: '20%',
           left: '10%',
+          right: '5%',
+          bottom: '12%'
         },
         xAxis: {
           type: 'category',
           data: opt.data.xaxis,
+          interval: 0,
           axisLine: {
             lineStyle: {
               color: '#a6a5b4'
@@ -664,7 +697,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             name: '难度',
             data: opt.data.nums,
             type: 'scatter',
-            hoverAnimation: true,
+            hoverAnimation: false,
             label: {
               show: true,
               color: '#fff',
@@ -674,31 +707,55 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
                 var len = labels.length
                 var newLen = Math.ceil(len / 2)
                 var newLables = []
-                if (len >= 8) {
+                var labelCont = labels.join('\n')
+
+                var format = ['{icon|×}']
+                if (len > 6) {
                   for (var i = 0; i < newLen - 1; i++) {
                     var newSplit = [labels[2 * i], labels[2 * i + 1]]
                     newLables.push(newSplit.join(' '))
                   }
-                  return newLables.join('\n')
+                  labelCont = newLables.join('\n')
+                  format.unshift('{twoCol|'+ labelCont +'}\n')
                 } else {
-                  return labels.join('\n')
+                  format.unshift('{oneCol|'+ labelCont +'}\n')
                 }
+                return format
               },
-              backgroundColor: opt.data.labelBack,
-              padding: 3,
+              rich: {
+                twoCol: {
+                  backgroundColor: opt.data.labelBack,
+                  color: '#fff',
+                  align: 'center',
+                  padding: 3,
+                  fontSize: 12,
+                  width: 40
+                },
+                oneCol: {
+                  backgroundColor: opt.data.labelBack,
+                  color: '#fff',
+                  align: 'center',
+                  padding: [2, 5, 2, 5],
+                  fontSize: 12,
+                  width: 14
+                },
+                icon: {
+                  fontSize: 18,
+                  color: opt.data.labelBack,
+                  align: 'center'
+                }
+              }
             },
             itemStyle: {
               color: '#fff',
-              borderType: 'dotted',
-              borderWidth: 5,
-              borderColor: opt.data.labelBack
+              borderColor: '#fff'
             }
           }
         ]
       }
     }
     // 禁止载入动画
-    // options['animation'] = false
+    options['animation'] = false
     return options
   }
 

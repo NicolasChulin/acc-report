@@ -134,6 +134,8 @@ function getOptions (opt) {
     }
   } else if (opt.type === 'bar-mixs' || opt.type === 'bar-mixs-l') {
     var barWidth = Math.floor(20 * 6 / opt.data.yaxis.length)
+    barWidth = barWidth > 30 ? 30 : barWidth;
+
     options = {
       legend: {
         show: true,
@@ -780,7 +782,7 @@ function getOpt (opt) {
     }
   } else if(opt.type === 'bar-mix') {
     var barWidth = Math.floor(20 * 6 / opt.data.yaxis.length)
-
+    barWidth = barWidth > 30 ? 30 : barWidth;
     options = {
       legend: {
         show: true,

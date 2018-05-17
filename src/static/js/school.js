@@ -460,9 +460,25 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             show: false
           },
           axisLabel: {
-            color: '#6b6b7e',
-            fontSize: 15,
-            fontWeight: 600
+            interval: 0,
+            formatter: function (value, index) {
+              var len = value.length;
+              var vals = [value]
+              if (len > 5) {
+                var pos = Math.ceil(len / 2)
+                vals = [value.slice(0, pos), value.slice(pos, len)];
+              }
+              return '{xlabel|' + vals.join('\n') + '}'
+            },
+            rich: {
+              xlabel: {
+                fontSize: 13,
+                color: '#6b6b7e',
+                width: 80,
+                fontWeight: 600,
+                lineHeight: 15
+              }
+            }
           },
           splitLine: {
             show: true
@@ -500,7 +516,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             label: {
               show: true,
               color: '#b04245',
-              position: 'top',
+              position: 'bottom',
               formatter: function (param) {
                 return (param.value * 100).toFixed(2) + '%'
               }
@@ -539,7 +555,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             label: {
               show: true,
               color: '#6f79c4',
-              position: 'top',
+              position: ['-50px', '0'],
               formatter: function (param) {
                 return (param.value * 100).toFixed(2) + '%'
               }
@@ -556,6 +572,9 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
         ]
       }
     } else if(opt.type === 'bar-mix') {
+      var barWidth = Math.floor(20 * 6 / opt.data.yaxis.length)
+      barWidth = barWidth > 30 ? 30 : barWidth;
+
       options = {
         legend: {
           show: true,
@@ -568,8 +587,9 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
           }
         },
         grid: {
-          bottom: '20%',
-          left: '15%',
+          top: '15%',
+          bottom: '18%',
+          left: '20%',
           right: '10%'
         },
         xAxis: {
@@ -610,7 +630,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
           axisLabel: {
             color: '#6b6b7e',
             fontWeight: 600,
-            fontSize: 15,
+            fontSize: 14,
             padding: [0, 10, 0, 0]
           },
           axisTick: {
@@ -622,7 +642,7 @@ require(['jquery', 'template', 'indexData', 'echarts'], function ($, tmpl, index
             name: '本校平均得分率',
             type: 'bar',
             data: opt.data.user,
-            barWidth: 20,
+            barWidth: barWidth,
             itemStyle: {
               color: '#b04245'
             }
