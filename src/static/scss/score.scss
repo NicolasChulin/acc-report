@@ -276,7 +276,7 @@
 }
 
 .sitem-cont{
-  margin: 15px 0;
+  margin-top: 10px;
 
   .cont-title{
     color: $midgray;
@@ -285,6 +285,7 @@
 
   .sitem-tables{
     overflow: hidden;
+    margin-bottom: 15px;
     .table-items{
       float: left;
 
@@ -315,12 +316,12 @@
 
   .chart-line{
     height: 314px;
-    margin: 20px 0;
+    margin-bottom: 15px;
     border: 1px solid $tinyWhite;
   }
   .chart-bar{
     height: 432px;
-    margin: 20px 0;
+    margin-bottom: 15px;
     border: 1px solid $tinyWhite;
   }
 

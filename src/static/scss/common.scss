@@ -227,7 +227,7 @@ img.cover{
 }
 
 .page-footer-tips{
-  margin-top: 20px;
+  margin-top: 15px;
   padding: 24px 32px;
   position: relative;
   border: 1px solid $tinyWhite;
@@ -295,21 +295,21 @@ img.cover{
     color: #fff;
   }
   td{
-    padding: 0 10px;
+    padding: 0 5px;
     height: 40px;
     border: 1px solid $tinyWhite;
     color: $midgray;
   }
-  td[rowspan="2"]{
-    height: 60px!important;
-  }
   .th-sub{
     td{
       color: $dark;
-      height: 30px;
+      height: 30px!important;
       font-size: 13px;
       padding: 0 5px;
     }
+  }
+  td[rowspan="2"]{
+    height: 60px!important;
   }
   .td-trow{
     height: 80px;
@@ -335,11 +335,13 @@ img.cover{
   &.table-rows-8{
     td{
       height: 36px;
+      font-size: 14px;
     }
   }
   &.table-rows-10{
     td{
       height: 32px;
+      font-size: 13px;
     }
   }
 

@@ -18,7 +18,9 @@ function getOptions (opt) {
         }
       },
       grid: {
-        bottom: '35%'
+        bottom: '35%',
+        left: '8%',
+        right: '5%'
       },
       xAxis: {
         type: 'category',
@@ -54,6 +56,8 @@ function getOptions (opt) {
       },
       yAxis: {
         type: 'value',
+        min: 0,
+        max: 1,
         show: false
       },
       series: [
@@ -184,7 +188,17 @@ function getOptions (opt) {
         },
         axisLabel: {
           color: '#6b6b7e',
-          padding: [0, 10, 0, 0]
+          interval: 0,
+          padding: [0, 10, 0, 0],
+          formatter: function (value, index) {
+            var len = value.length;
+            var vals = [value]
+            if (len >= 10) {
+              var pos = Math.ceil(len / 2)
+              vals = [value.slice(0, pos), value.slice(pos, len)];
+            }
+            return vals.join('\n')
+          }
         },
         axisTick: {
           show: false
@@ -237,7 +251,7 @@ function getOptions (opt) {
         left: '20%'
       }
       options.xAxis.splitNumber = 10
-      options.yAxis.axisLabel['fontSize'] = 15
+      options.yAxis.axisLabel['fontSize'] = 14
     }
 
   } else if (opt.type === 'bar') {
