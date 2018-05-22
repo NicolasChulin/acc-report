@@ -359,8 +359,11 @@ function getOptions (opt) {
         },
         axisLabel: {
           color: '#6b6b7e',
-          fontSize: 14,
-          padding: [10, 0, 0, 0]
+          fontSize: 12,
+          formatter: function (value) {
+            var num = value.split('题')[0]
+            return [num, '题'].join('\n')
+          }
         },
         axisTick: {
           alignWithLabel: true
@@ -402,25 +405,34 @@ function getOptions (opt) {
             show: true,
             color: '#fff',
             position: 'top',
+            // formatter: function (params) {
+            //   var labels = params.data.labels
+            //   var len = labels.length
+            //   var newLen = Math.ceil(len / 2)
+            //   var newLables = []
+            //   var labelCont = labels.join('\n')
+            //
+            //   var format = ['{icon|×}']
+            //   if (len > 6) {
+            //     for (var i = 0; i < newLen - 1; i++) {
+            //       var newSplit = [labels[2 * i], labels[2 * i + 1]]
+            //       newLables.push(newSplit.join(' '))
+            //     }
+            //     labelCont = newLables.join('\n')
+            //     format.unshift('{twoCol|'+ labelCont +'}')
+            //   } else {
+            //     format.unshift('{oneCol|'+ labelCont +'}')
+            //   }
+            //   return format.join('\n')
+            // },
             formatter: function (params) {
               var labels = params.data.labels
-              var len = labels.length
-              var newLen = Math.ceil(len / 2)
-              var newLables = []
               var labelCont = labels.join('\n')
-
-              var format = ['{icon|×}']
-              if (len > 6) {
-                for (var i = 0; i < newLen - 1; i++) {
-                  var newSplit = [labels[2 * i], labels[2 * i + 1]]
-                  newLables.push(newSplit.join(' '))
-                }
-                labelCont = newLables.join('\n')
-                format.unshift('{twoCol|'+ labelCont +'}\n')
-              } else {
-                format.unshift('{oneCol|'+ labelCont +'}\n')
-              }
-              return format
+              var format = [
+                '{oneCol|'+ labelCont +'}',
+                '{icon|×}'
+              ]
+              return format.join('\n')
             },
             rich: {
               twoCol: {
@@ -441,14 +453,15 @@ function getOptions (opt) {
               },
               icon: {
                 fontSize: 18,
+                padding: [-20,0,0,0],
                 color: opt.data.labelBack,
                 align: 'center'
               }
             }
           },
           itemStyle: {
-            color: '#fff',
-            borderColor: '#fff'
+            color: 'rgba(255, 255, 255, 0)',
+            borderColor: 'rgba(255, 255, 255, 0)'
           }
         }
       ]

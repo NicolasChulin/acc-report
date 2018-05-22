@@ -1,136 +1,63 @@
 window.onload = function () {
-  var errPointDom = document.getElementById('err-point');
-  var errCapaDom = document.getElementById('err-capa');
+  var errPointDom1 = document.getElementById('err-point1');
+  var errPointDom2 = document.getElementById('err-point2');
+  var errCapaDom1 = document.getElementById('err-capa1');
+  var errCapaDom2 = document.getElementById('err-capa2');
 
-  var charts = {
-    errPoint: getEchart(errPointDom),
-    errCapa: getEchart(errCapaDom)
+  var xaxix = []
+  var nums = []
+  for (var i = 1; i < 31; i++) {
+    var xlabel = i < 10 ? '0' + i + '题' : i + '题'
+    xaxix.push(xlabel)
+    var val = 0.2 + 0.02 * i
+    var lnum = Math.ceil(Math.random() * 5)
+    var labels = []
+    for (var j = 0; j < lnum; j++) {
+      labels.push('A' + (j + 1))
+    }
+    nums.push({
+      value: val,
+      labels: labels
+    })
   }
+
   // 知识
-  charts.errPoint.setOption(getOptions({
+  getEchart(errPointDom1).setOption(getOptions({
     type: 'line',
     data: {
-      title: '考生错答题目的难度-知识情况',
-      xaxis: ['16题', '11题', '6题', '15题', '20题', '14题', '18题', '1题', '9题', '7题'],
+      title: '考生错答题目的难度-知识情况1',
+      xaxis: xaxix,
       labelBack: '#b14447',
-      nums: [
-        {
-          value: 0.23,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.35,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.37,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.28,
-          labels: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11']
-        },
-        {
-          value: 0.36,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.40,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.45,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.34,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.30,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.34,
-          labels: ['A1', 'A2', 'A3']
-        }
-      ]
+      nums: nums
     }
-  }))
+  }));
+  getEchart(errPointDom2).setOption(getOptions({
+    type: 'line',
+    data: {
+      title: '考生错答题目的难度-知识情况2',
+      xaxis: xaxix,
+      labelBack: '#b14447',
+      nums: nums
+    }
+  }));
+
   // 能力
-  charts.errCapa.setOption(getOptions({
+  getEchart(errCapaDom1).setOption(getOptions({
     type: 'line',
     data: {
       title: '考生错答题目的难度-能力（素质）情况',
-      xaxis: ['16题', '11题', '6题', '15题', '20题', '7题', '7题', '7题', '7题', '7题', '7题', '14题', '18题', '1题', '9题', '7题'],
+      xaxis: xaxix,
       labelBack: '#6f79c4',
-      // pointDom: document.getElementById('echartPointBlue'),
-      nums: [
-        {
-          value: 0.23,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.35,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.37,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.28,
-          labels: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11']
-        },
-        {
-          value: 0.36,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.40,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.45,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.34,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.30,
-          labels: ['A1', 'A2', 'A3']
-        },
-        {
-          value: 0.28,
-          labels: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11']
-        },
-        {
-          value: 0.28,
-          labels: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11']
-        },
-        {
-          value: 0.28,
-          labels: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11']
-        },
-        {
-          value: 0.28,
-          labels: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11']
-        },
-        {
-          value: 0.28,
-          labels: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11']
-        },
-        {
-          value: 0.28,
-          labels: ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11']
-        },
-        {
-          value: 0.34,
-          labels: ['A1', 'A2', 'A3']
-        }
-      ]
+      nums: nums
     }
-  }))
+  }));
+  getEchart(errCapaDom2).setOption(getOptions({
+    type: 'line',
+    data: {
+      title: '考生错答题目的难度-能力（素质）情况',
+      xaxis: xaxix,
+      labelBack: '#6f79c4',
+      nums: nums
+    }
+  }));
 }

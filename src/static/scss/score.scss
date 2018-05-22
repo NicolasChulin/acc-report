@@ -376,13 +376,14 @@
     .chart-cont{
       height: 448px;
     }
-    .chart-intro{
-      min-height: 60px;
-      padding: 0 50px;
-      font-size: 14px;
-      line-height: 20px;
-      font-weight: 600;
-      color: $gray;
-    }
+  }
+  .chart-intro{
+    min-height: 70px;
+    padding: 15px 30px;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 600;
+    color: $gray;
+    border: 1px solid $tinyWhite;
   }
 }
