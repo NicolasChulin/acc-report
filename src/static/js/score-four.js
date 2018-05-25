@@ -6,7 +6,7 @@ window.onload = function () {
 
   var xaxix = []
   var nums = []
-  for (var i = 1; i < 31; i++) {
+  for (var i = 1; i <= 15; i++) {
     var xlabel = i < 10 ? '0' + i + '题' : i + '题'
     xaxix.push(xlabel)
     var val = 0.2 + 0.02 * i
