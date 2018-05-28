@@ -310,7 +310,7 @@ function getOptions (opt) {
             },
             rich: {
               tinyLabel: {
-                padding: [0,0,0,-50],
+                padding: [0,0,0,-55],
                 color: '#fff'
               }
             }

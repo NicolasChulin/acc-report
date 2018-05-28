@@ -28,7 +28,7 @@ window.onload = function () {
     data: {
       title: '与本省考生对比',
       dataType: 'hard',
-      nums: [0.65, 0.86, 0.67, 0.40]
+      nums: [0.65, 1.00, 0.67, 0.40]
     }
   }))
   // mid
