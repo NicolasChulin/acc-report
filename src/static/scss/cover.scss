@@ -39,7 +39,6 @@
 
 .cover-footer{
   position: absolute;
-  width: 225px;
   height: 244px;
   right: 96px;
   bottom: 93px;
@@ -49,5 +48,9 @@
   .ft-name{
     font-size: 70px;
     height: 139px;
+  }
+  .ft-school{
+    white-space: nowrap;
+    overflow: hidden;
   }
 }
