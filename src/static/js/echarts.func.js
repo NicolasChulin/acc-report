@@ -317,7 +317,7 @@ function getOptions (opt) {
           },
           itemStyle: {
             color: function (params) {
-              var opa = params.dataIndex === 0 ? 7 : 0.5
+              var opa = params.dataIndex === 0 ? 1 : 0.5
               if (params.seriesName === 'hard') {
                 return 'rgba(179, 71, 74, '+ opa +')'
               } else if (params.seriesName === 'mid') {
@@ -868,7 +868,16 @@ function getOpt (opt) {
           color: '#6b6b7e',
           fontWeight: 600,
           fontSize: 14,
-          padding: [0, 10, 0, 0]
+          padding: [0, 10, 0, 0],
+          formatter: function (value, index) {
+            var len = value.length;
+            var vals = [value]
+            if (len >= 10) {
+              var pos = Math.ceil(len / 2)
+              vals = [value.slice(0, pos), value.slice(pos, len)];
+            }
+            return vals.join('\n')
+          }
         },
         axisTick: {
           show: false
