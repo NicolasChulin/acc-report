@@ -1,0 +1,80 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>scholl report card</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/common.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/school.css">
+</head>
+
+<body>
+
+  <div class="page-box school-box">
+    <div class="page-head">
+      <span>高中生发展与核心能力评测（ACC）</span>
+      <span>核心能力评测（ACC）个人评价报告</span>
+    </div>
+    <div class="page-report">
+      <h2 class="page-report-title">学生成绩明细</h2>
+      <table class="table report-table" cellspacing="0" id="report-table">
+        <tr class="td-tit">
+          <td rowspan="2">姓名</td>
+          <td rowspan="2">准考证号</td>
+          <td colspan="3">语文</td>
+          <td colspan="3">数学</td>
+          <td colspan="3">英语</td>
+          <td colspan="3">政治</td>
+          <td colspan="3">历史</td>
+          <td colspan="3">物理</td>
+          <td colspan="3">化学</td>
+        </tr>
+        <tr class="td-tit">
+          <td>成绩</td>
+          <td class="td-sli">全体百分位等级</td>
+          <td class="td-sli">省内百分位等级</td>
+          <td>成绩</td>
+          <td class="td-sli">全体百分位等级</td>
+          <td class="td-sli">省内百分位等级</td>
+          <td>成绩</td>
+          <td class="td-sli">全体百分位等级</td>
+          <td class="td-sli">省内百分位等级</td>
+          <td>成绩</td>
+          <td class="td-sli">全体百分位等级</td>
+          <td class="td-sli">省内百分位等级</td>
+          <td>成绩</td>
+          <td class="td-sli">全体百分位等级</td>
+          <td class="td-sli">省内百分位等级</td>
+          <td>成绩</td>
+          <td class="td-sli">全体百分位等级</td>
+          <td class="td-sli">省内百分位等级</td>
+          <td>成绩</td>
+          <td class="td-sli">全体百分位等级</td>
+          <td class="td-sli">省内百分位等级</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+  <script src="/static/libs/jquery-2.1.4.js"></script>
+  <script>
+    $(function () {
+      var trs = ''
+      var datas = [78, 45, 56, 78, 45, 56, 78, 45, 56, 78, 45, 56, 78, 45, 56, 78, 45, 56, 78, 45, 56]
+      var len = datas.length
+      for (var i = 0; i < 30; i++) {
+        var tr = '<tr><td>张三</td><td>123456789012</td>'
+        for (var j = 0; j < len; j++) {
+          tr += '<td>' + datas[j] + '</td>'
+        }
+        tr += '</tr>'
+        trs += tr
+      }
+      $('#report-table').append($(trs))
+
+    });
+  </script>
+</body>
+
+</html>
